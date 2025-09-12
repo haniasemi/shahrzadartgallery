@@ -1,7 +1,5 @@
 {
   "app": "shahrzadartgallery",
-  "port": 3000,
-  "build": {
-    "method": "dockerfile"
-  }
+  "platform": "docker",
+  "port": 3000
 }

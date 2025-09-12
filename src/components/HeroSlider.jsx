@@ -14,9 +14,9 @@ const HeroSlider = () => {
       id: 1,
       title: "گالری هنری شهرزاد",
       subtitle: "هنر دست‌ساز ایرانی با کیفیت و زیبایی منحصر به فرد",
-      image: null, // بدون تصویر بک‌گراند
-      cta: "مشاهده محصولات",
-      ctaLink: "/products",
+      image: null,
+      cta: "سفارش دهید",
+      ctaLink: "/custom-order",
       showContent: true
     },
     {
@@ -27,6 +27,15 @@ const HeroSlider = () => {
       cta: "",
       ctaLink: "",
       showContent: false
+    },
+    {
+      id: 3,
+      title: "محصولات منحصر به فرد",
+      subtitle: "مجموعه‌ای از بهترین آثار هنری و دکوری دست‌ساز",
+      image: null,
+      cta: "مشاهده گالری",
+      ctaLink: "/projects",
+      showContent: true
     }
   ];
 
@@ -78,19 +87,22 @@ const HeroSlider = () => {
       {slides[currentSlide].showContent && (
         <div className="relative z-20 h-full flex items-center justify-center">
           <div className="text-center text-foreground px-4 max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-fade-in-up">
-              <span className="golden-text">{slides[currentSlide].title}</span>
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 text-white/90 animate-fade-in-up" style={{animationDelay: '0.2s'}}>
-              {slides[currentSlide].subtitle}
-            </p>
+            {slides[currentSlide].title && (
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-fade-in-up">
+                <span className="golden-text">{slides[currentSlide].title}</span>
+              </h1>
+            )}
+            {slides[currentSlide].subtitle && (
+              <p className="text-xl md:text-2xl mb-8 text-white/90 animate-fade-in-up" style={{animationDelay: '0.2s'}}>
+                {slides[currentSlide].subtitle}
+              </p>
+            )}
             <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up" style={{animationDelay: '0.4s'}}>
-              <Button size="lg" className="btn-golden text-lg px-8 py-3">
-                <Link href={slides[currentSlide].ctaLink}>{slides[currentSlide].cta}</Link>
-              </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-black text-lg px-8 py-3">
-                <Link href="/about">درباره ما</Link>
-              </Button>
+              {slides[currentSlide].cta && (
+                <Button size="lg" className="btn-golden text-lg px-8 py-3">
+                  <Link href={slides[currentSlide].ctaLink}>{slides[currentSlide].cta}</Link>
+                </Button>
+              )}
             </div>
           </div>
         </div>

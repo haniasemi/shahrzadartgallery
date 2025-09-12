@@ -6,10 +6,11 @@ import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Menu, X, Search, User, ShoppingCart } from 'lucide-react';
+import { Menu, X, Search, User, ShoppingCart, ChevronLeft } from 'lucide-react';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [openSubmenu, setOpenSubmenu] = useState(null);
 
   const menuItems = [
     { name: 'خانه', href: '/' },
@@ -64,6 +65,7 @@ const Header = () => {
     { name: 'اتاق سفارش', href: '/custom-order' },
     { name: 'وبلاگ', href: '/blog' },
     { name: 'درباره ما', href: '/about' },
+    { name: '', href: '' },
     { name: 'تماس با ما', href: '/contact' }
   ];
 
@@ -121,9 +123,10 @@ const Header = () => {
                   <span className="sr-only">باز کردن منو</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-[300px] sm:w-[400px]">
-                <div className="flex flex-col space-y-4 mt-8">
-                  <div className="flex items-center space-x-3 space-x-reverse mb-6">
+              <SheetContent side="right" className="w-[300px] sm:w-[400px] flex flex-col">
+                {/* Header ثابت */}
+                <div className="flex-shrink-0">
+                  <div className="flex items-center space-x-3 space-x-reverse mb-6 mt-8">
                     <div className="relative h-10 w-12">
                       <Image
                         src="/photo_2025-09-06_06-38-01.jpg"
@@ -142,6 +145,8 @@ const Header = () => {
                       type="text"
                       placeholder="جستجو در محصولات..."
                       className="pr-10 pl-4 text-right"
+                      readOnly
+                      onFocus={(e) => e.target.blur()}
                     />
                   </div>
 
@@ -157,32 +162,57 @@ const Header = () => {
                       <span className="bg-primary text-primary-foreground text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
                     </Link>
                   </div>
-                  
-                  {menuItems.map((item) => (
-                    <div key={item.name}>
-                      <Link 
-                        href={item.href}
-                        className="block py-2 text-foreground hover:text-primary transition-colors duration-200 font-medium"
-                        onClick={() => setIsOpen(false)}
-                      >
-                        {item.name}
-                      </Link>
-                      {item.submenu && (
-                        <div className="mr-4 mt-2 space-y-1">
-                          {item.submenu.map((subItem) => (
-                            <Link
-                              key={subItem.name}
-                              href={subItem.href}
-                              className="block py-1 text-sm text-muted-foreground hover:text-primary transition-colors duration-200"
-                              onClick={() => setIsOpen(false)}
-                            >
-                              {subItem.name}
-                            </Link>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  ))}
+                </div>
+
+                {/* منو با اسکرول مجزا */}
+                <div className="flex-1 overflow-y-auto">
+                  <div className="space-y-4">
+                    {menuItems.map((item) => (
+                      <div key={item.name}>
+                        {item.name ? (
+                          <div>
+                            {item.submenu ? (
+                              <button
+                                onClick={() => setOpenSubmenu(openSubmenu === item.name ? null : item.name)}
+                                className="flex items-center justify-between w-full py-2 text-foreground hover:text-primary transition-colors duration-200 font-medium"
+                              >
+                                <span>{item.name}</span>
+                                <ChevronLeft 
+                                  className={`h-4 w-4 transition-transform duration-200 ${
+                                    openSubmenu === item.name ? 'rotate-90' : ''
+                                  }`} 
+                                />
+                              </button>
+                            ) : (
+                              <Link 
+                                href={item.href}
+                                className="block py-2 text-foreground hover:text-primary transition-colors duration-200 font-medium"
+                                onClick={() => setIsOpen(false)}
+                              >
+                                {item.name}
+                              </Link>
+                            )}
+                            {item.submenu && openSubmenu === item.name && (
+                              <div className="mr-4 mt-2 space-y-1 animate-fade-in-up">
+                                {item.submenu.map((subItem) => (
+                                  <Link
+                                    key={subItem.name}
+                                    href={subItem.href}
+                                    className="block py-1 text-sm text-muted-foreground hover:text-primary transition-colors duration-200"
+                                    onClick={() => setIsOpen(false)}
+                                  >
+                                    {subItem.name}
+                                  </Link>
+                                ))}
+                              </div>
+                            )}
+                          </div>
+                        ) : (
+                          <div className="h-2"></div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </SheetContent>
             </Sheet>
@@ -194,12 +224,16 @@ const Header = () => {
           <nav className="flex items-center justify-center space-x-8 space-x-reverse py-3">
             {menuItems.map((item) => (
               <div key={item.name} className="relative group">
-                <Link 
-                  href={item.href}
-                  className="text-foreground hover:text-primary transition-colors duration-200 font-medium py-2"
-                >
-                  {item.name}
-                </Link>
+                {item.name ? (
+                  <Link 
+                    href={item.href}
+                    className="text-foreground hover:text-primary transition-colors duration-200 font-medium py-2"
+                  >
+                    {item.name}
+                  </Link>
+                ) : (
+                  <div className="w-4"></div>
+                )}
                 {item.submenu && (
                   <div className="absolute top-full right-0 mt-2 w-64 bg-white rounded-lg shadow-lg border opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                     <div className="py-2">
