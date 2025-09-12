@@ -8,8 +8,8 @@ WORKDIR /app
 # کپی package.json و package-lock.json
 COPY package*.json ./
 
-# نصب dependencies
-RUN npm install
+# نصب dependencies با cache
+RUN npm install --frozen-lockfile=false
 
 # کپی کد منبع
 COPY . .
