@@ -83,7 +83,7 @@ const Header = () => {
                 priority
               />
             </div>
-            <span className="text-xl font-bold golden-text">گالری هنری شهرزاد</span>
+            <span className="text-lg sm:text-xl font-bold golden-text whitespace-nowrap">گالری هنری شهرزاد</span>
           </Link>
 
           {/* نوار جستجو */}
@@ -132,7 +132,7 @@ const Header = () => {
                         className="object-contain"
                       />
                     </div>
-                    <span className="text-lg font-bold golden-text">گالری هنری شهرزاد</span>
+                    <span className="text-base sm:text-lg font-bold golden-text whitespace-nowrap">گالری هنری شهرزاد</span>
                   </div>
                   
                   {/* جستجو در موبایل */}
