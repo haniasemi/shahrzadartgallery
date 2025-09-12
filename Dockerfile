@@ -8,8 +8,8 @@ WORKDIR /app
 # کپی package.json و package-lock.json
 COPY package*.json ./
 
-# نصب dependencies
-RUN npm ci --only=production
+# نصب dependencies (شامل devDependencies برای build)
+RUN npm ci
 
 # مرحله build
 FROM base AS builder
