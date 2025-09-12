@@ -1,0 +1,6 @@
+ {   "app" : "shahrzadartgallery",
+    "port":3000,
+    "build": {
+    "location":"iran"},
+    "disks":[]
+}

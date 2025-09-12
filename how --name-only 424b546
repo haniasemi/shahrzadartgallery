@@ -1,0 +1,11 @@
+[33mcommit f9b9323254623bb943adb9bef9e3a784f5b97947[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m)[m
+Author: User <user@example.com>
+Date:   Fri Sep 12 12:11:48 2025 +0330
+
+    docker file
+
+.dockerignore
+DOCKER.md
+Dockerfile
+docker-compose.yml
+next.config.mjs
