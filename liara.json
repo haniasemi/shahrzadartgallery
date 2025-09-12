@@ -2,8 +2,7 @@
   "app": "shahrzadartgallery",
   "port": 3000,
   "build": {
-    "location": "iran",
-    "method": "dockerfile"
-  },
+    "location": "iran"},
+    "method": "dockerfile",
   "disks": []
 }
