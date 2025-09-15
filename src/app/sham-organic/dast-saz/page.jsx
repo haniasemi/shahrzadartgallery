@@ -6,74 +6,128 @@ import { Badge } from '@/components/ui/badge';
 const products = [
   {
     id: 1,
-    title: 'شمع موم عسل',
-    description: 'شمع دست‌ساز با موم عسل طبیعی و رایحه اسطوخودوس',
-    price: '۱۵۰,۰۰۰',
-    image: '/api/placeholder/300/400',
-    fragrance: 'اسطوخودوس',
-    burnTime: '۴۰ ساعت',
-    size: 'قطر ۸ سانتی‌متر',
-    inStock: true
+    title: 'شمع گل رز دست‌ساز',
+    description: 'شمع دست‌ساز به شکل گل رز با موم طبیعی و رایحه خوش گل رز',
+    price: 'قیمت: به زودی',
+    images: ['/shamDastSaz/1.jpg', '/shamDastSaz/2.jpg', '/shamDastSaz/3.jpg'],
+    fragrance: 'گل رز',
+    burnTime: '۴۵ ساعت',
+    size: 'قطر ۱۰ سانتی‌متر',
+    inStock: true,
+    features: ['دست‌ساز', 'ارگانیک', 'معطر']
   },
   {
     id: 2,
-    title: 'شمع سویا',
-    description: 'شمع دست‌ساز با موم سویا و رایحه وانیل',
-    price: '۱۸۰,۰۰۰',
-    image: '/api/placeholder/300/400',
-    fragrance: 'وانیل',
+    title: 'مجموعه شمع‌های رز',
+    description: 'مجموعه زیبای شمع‌های گل رز در کاسه چوبی با رنگ‌های پاستلی',
+    price: 'قیمت: به زودی',
+    images: ['/shamDastSaz/4.jpg', '/shamDastSaz/5.jpg', '/shamDastSaz/6.jpg', '/shamDastSaz/7.jpg'],
+    fragrance: 'گل رز و یاسمن',
     burnTime: '۵۰ ساعت',
-    size: 'قطر ۱۰ سانتی‌متر',
-    inStock: true
+    size: 'مجموعه کامل',
+    inStock: true,
+    features: ['دست‌ساز', 'ارگانیک', 'معطر', 'مجموعه']
   },
   {
     id: 3,
-    title: 'شمع پارافین طبیعی',
-    description: 'شمع دست‌ساز با پارافین طبیعی و رایحه رز',
-    price: '۱۲۰,۰۰۰',
-    image: '/api/placeholder/300/400',
-    fragrance: 'رز',
-    burnTime: '۳۵ ساعت',
-    size: 'قطر ۶ سانتی‌متر',
-    inStock: false
+    title: 'شمع رز صورتی دست‌ساز',
+    description: 'شمع دست‌ساز به شکل گل رز صورتی با موم طبیعی و رایحه خوش گل رز',
+    price: 'قیمت: به زودی',
+    images: ['/shamDastSaz/8.jpg'],
+    fragrance: 'گل رز صورتی',
+    burnTime: '۴۰ ساعت',
+    size: 'قطر ۸ سانتی‌متر',
+    inStock: true,
+    features: ['دست‌ساز', 'ارگانیک', 'معطر']
   },
   {
     id: 4,
-    title: 'شمع لیمو و نعنا',
-    description: 'شمع دست‌ساز با رایحه تازه لیمو و نعنا',
-    price: '۱۶۰,۰۰۰',
-    image: '/api/placeholder/300/400',
-    fragrance: 'لیمو و نعنا',
-    burnTime: '۴۵ ساعت',
+    title: 'شمع رز زرد دست‌ساز',
+    description: 'شمع دست‌ساز به شکل گل رز زرد با موم طبیعی و رایحه خوش گل رز',
+    price: 'قیمت: به زودی',
+    images: ['/shamDastSaz/9.jpg'],
+    fragrance: 'گل رز زرد',
+    burnTime: '۴۲ ساعت',
     size: 'قطر ۹ سانتی‌متر',
-    inStock: true
+    inStock: true,
+    features: ['دست‌ساز', 'ارگانیک', 'معطر']
   },
   {
     id: 5,
-    title: 'شمع یاسمن',
-    description: 'شمع دست‌ساز با رایحه خوش یاسمن',
-    price: '۲۰۰,۰۰۰',
-    image: '/api/placeholder/300/400',
-    fragrance: 'یاسمن',
+    title: 'مجموعه شمع‌های رز پاستلی در کاسه',
+    description: 'مجموعه زیبای شمع‌های گل رز در رنگ‌های پاستلی با موم طبیعی و رایحه خوش',
+    price: 'قیمت: به زودی',
+    images: ['/shamDastSaz/10.jpg', '/shamDastSaz/11.jpg'],
+    fragrance: 'گل رز پاستلی',
     burnTime: '۵۵ ساعت',
-    size: 'قطر ۱۲ سانتی‌متر',
-    inStock: true
+    size: 'مجموعه کامل',
+    inStock: true,
+    features: ['دست‌ساز', 'ارگانیک', 'معطر', 'مجموعه']
   },
   {
     id: 6,
-    title: 'شمع چوب صندل',
-    description: 'شمع دست‌ساز با رایحه آرامش‌بخش چوب صندل',
-    price: '۱۷۰,۰۰۰',
-    image: '/api/placeholder/300/400',
-    fragrance: 'چوب صندل',
-    burnTime: '۴۸ ساعت',
-    size: 'قطر ۸ سانتی‌متر',
-    inStock: true
+    title: 'شمع تزئینی گل‌دار در کاسه شیشه‌ای',
+    description: 'شمع دست‌ساز تزئینی با گل‌های مومی و توت‌های کوچک در کاسه شیشه‌ای شفاف',
+    price: 'قیمت: به زودی',
+    images: ['/shamDastSaz/12.jpg', '/shamDastSaz/13.jpg'],
+    fragrance: 'گل رز و توت',
+    burnTime: '۶۰ ساعت',
+    size: 'کاسه شیشه‌ای بزرگ',
+    inStock: true,
+    features: ['دست‌ساز', 'ارگانیک', 'معطر', 'تزئینی']
+  },
+  {
+    id: 7,
+    title: 'شمع رز سفید دست‌ساز در کاسه',
+    description: 'شمع دست‌ساز زیبا با گل‌های رز سفید و کرم در کاسه سرامیکی آبی خاکستری',
+    price: 'قیمت: به زودی',
+    images: ['/shamDastSaz/14.jpg', '/shamDastSaz/15.jpg', '/shamDastSaz/16.jpg'],
+    fragrance: 'گل رز سفید',
+    burnTime: '۵۸ ساعت',
+    size: 'کاسه سرامیکی متوسط',
+    inStock: true,
+    features: ['دست‌ساز', 'ارگانیک', 'معطر', 'تزئینی']
+  },
+  {
+    id: 8,
+    title: 'شمع رز نارنجی دست‌ساز در ظرف شیشه‌ای',
+    description: 'شمع دست‌ساز زیبا به شکل گل رز نارنجی با گرادیان رنگی طبیعی در ظرف شیشه‌ای شفاف',
+    price: 'قیمت: به زودی',
+    images: ['/shamDastSaz/17.jpg', '/shamDastSaz/18.jpg', '/shamDastSaz/19.jpg', '/shamDastSaz/20.jpg'],
+    fragrance: 'گل رز نارنجی',
+    burnTime: '۶۵ ساعت',
+    size: 'ظرف شیشه‌ای متوسط',
+    inStock: true,
+    features: ['دست‌ساز', 'ارگانیک', 'معطر', 'تزئینی']
+  },
+  {
+    id: 9,
+    title: 'مجموعه شمع‌های رز هلویی دست‌ساز در کاسه',
+    description: 'مجموعه زیبای شمع‌های گل رز در رنگ‌های هلویی و کرم با برگ‌های سبز در کاسه سرامیکی',
+    price: 'قیمت: به زودی',
+    images: ['/shamDastSaz/21.jpg', '/shamDastSaz/22.jpg', '/shamDastSaz/23.jpg'],
+    fragrance: 'گل رز هلویی',
+    burnTime: '۶۸ ساعت',
+    size: 'کاسه سرامیکی متوسط',
+    inStock: true,
+    features: ['دست‌ساز', 'ارگانیک', 'معطر', 'مجموعه']
+  },
+  {
+    id: 10,
+    title: 'مجموعه شمع‌های رز سالمون دست‌ساز در سینی چوبی',
+    description: 'مجموعه زیبای شمع‌های گل رز در رنگ سالمون با برگ‌های سبز در سینی چوبی طبیعی',
+    price: 'قیمت: به زودی',
+    images: ['/shamDastSaz/24.jpg', '/shamDastSaz/25.jpg', '/shamDastSaz/26.jpg', '/shamDastSaz/27.jpg'],
+    fragrance: 'گل رز سالمون',
+    burnTime: '۷۰ ساعت',
+    size: 'سینی چوبی متوسط',
+    inStock: true,
+    features: ['دست‌ساز', 'ارگانیک', 'معطر', 'مجموعه']
   }
 ];
 
 const fragrances = [
-  'اسطوخودوس', 'وانیل', 'رز', 'لیمو', 'نعنا', 'یاسمن', 'چوب صندل', 'برگاموت'
+  'گل رز', 'رز ملایم', 'رز تازه', 'رز و برگ', 'رز لوکس', 'یاسمن', 'اسطوخودوس', 'وانیل'
 ];
 
 export default function DastSazPage() {
@@ -94,11 +148,11 @@ export default function DastSazPage() {
       <section className="py-12 px-4">
         <div className="container mx-auto text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6 animate-fade-in-up">
-            شمع‌های دست‌ساز ارگانیک
+            شمع‌های گل رز دست‌ساز
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8 animate-fade-in-up">
-            مجموعه‌ای از شمع‌های دست‌ساز که با مواد طبیعی و ارگانیک ساخته شده‌اند. 
-            هر شمع با رایحه‌های خوشبو و طبیعی برای ایجاد آرامش و زیبایی در فضای شما طراحی شده است.
+            مجموعه‌ای از شمع‌های دست‌ساز به شکل گل رز که با مواد طبیعی و ارگانیک ساخته شده‌اند. 
+            هر شمع با رایحه‌های خوشبو و طبیعی گل رز برای ایجاد آرامش و زیبایی در فضای شما طراحی شده است.
           </p>
           <div className="flex justify-center gap-4 animate-fade-in-up">
             <Badge variant="secondary" className="text-lg px-6 py-2">
@@ -141,15 +195,24 @@ export default function DastSazPage() {
               <Card key={product.id} className="card-elegant hover:shadow-2xl transition-all duration-300 hover:scale-105 group">
                 <div className="relative overflow-hidden rounded-t-lg">
                   <div className="aspect-[3/4] bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
-                    <div className="text-6xl text-primary/40 group-hover:text-primary/60 transition-colors">
-                      🕯️
-                    </div>
+                    <img 
+                      src={product.images[0]} 
+                      alt={product.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    />
                   </div>
                   {!product.inStock && (
                     <div className="absolute top-4 right-4">
                       <Badge variant="destructive">ناموجود</Badge>
                     </div>
                   )}
+                  <div className="absolute top-4 left-4 flex flex-wrap gap-1">
+                    {product.features.map((feature, index) => (
+                      <Badge key={index} variant="secondary" className="text-xs">
+                        {feature}
+                      </Badge>
+                    ))}
+                  </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
                 <CardHeader>
@@ -176,15 +239,26 @@ export default function DastSazPage() {
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-sm text-muted-foreground">قیمت:</span>
-                      <span className="text-lg font-bold text-primary">{product.price} تومان</span>
+                      <span className="text-lg font-bold text-primary">{product.price}</span>
                     </div>
-                    <Button 
-                      className="w-full mt-4" 
-                      disabled={!product.inStock}
-                      variant={product.inStock ? "default" : "secondary"}
-                    >
-                      {product.inStock ? "مشاهده جزئیات" : "ناموجود"}
-                    </Button>
+                    <div className="flex gap-2 mt-4">
+                      <Link href={`/sham-organic/dast-saz/product/${product.id}`} className="flex-1">
+                        <Button 
+                          className="w-full" 
+                          disabled={!product.inStock}
+                          variant={product.inStock ? "default" : "secondary"}
+                        >
+                          {product.inStock ? "مشاهده جزئیات" : "ناموجود"}
+                        </Button>
+                      </Link>
+                      <Button 
+                        className="flex-1 btn-golden" 
+                        disabled={!product.inStock}
+                        variant={product.inStock ? "default" : "secondary"}
+                      >
+                        {product.inStock ? "افزودن به سبد" : "ناموجود"}
+                      </Button>
+                    </div>
                   </div>
                 </CardContent>
               </Card>
