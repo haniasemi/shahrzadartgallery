@@ -18,6 +18,10 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "گالری هنری شهرزاد",
   description: "گالری هنری شهرزاد - آینانتیک، دکوری، ظروف سرامیکی، شمع ارگانیک و پاپیه ماشه",
+  icons: {
+    icon: '/photo_2025-09-06_06-38-01.jpg',
+    apple: '/photo_2025-09-06_06-38-01.jpg',
+  },
 };
 
 export default function RootLayout({ children }) {
