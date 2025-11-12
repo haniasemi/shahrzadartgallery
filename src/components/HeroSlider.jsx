@@ -56,7 +56,7 @@ const HeroSlider = () => {
   };
 
   return (
-    <section className="relative h-screen min-h-[500px] max-h-[100vh] overflow-hidden">
+    <section className="relative h-[60vh] sm:h-[70vh] md:h-[80vh] lg:h-screen min-h-[400px] sm:min-h-[500px] max-h-[100vh] overflow-hidden">
       {/* اسلایدها */}
       {slides.map((slide, index) => (
         <div
@@ -67,14 +67,23 @@ const HeroSlider = () => {
         >
           <div className="relative w-full h-full">
             {slide.image ? (
-              <Image
-                src={slide.image}
-                alt={slide.title || "گالری هنری شهرزاد"}
-                fill
-                className="object-cover object-center"
-                sizes="100vw"
-                priority={index === 0}
-              />
+              <>
+                <Image
+                  src={slide.image}
+                  alt={slide.title || "گالری هنری شهرزاد"}
+                  fill
+                  className={`object-center ${
+                    slide.showContent 
+                      ? 'object-cover' 
+                      : 'object-contain sm:object-cover'
+                  }`}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 100vw"
+                  priority={index === 0}
+                />
+                {!slide.showContent && (
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent"></div>
+                )}
+              </>
             ) : (
               <div className="w-full h-full bg-gradient-to-br from-primary/30 to-secondary/30"></div>
             )}
@@ -90,7 +99,7 @@ const HeroSlider = () => {
 
       {/* محتوای اسلاید */}
       {slides[currentSlide].showContent && (
-        <div className="relative z-20 h-full flex items-center justify-center px-4 py-8 sm:py-16">
+        <div className="relative z-20 h-full flex items-center justify-center px-4 py-4 sm:py-8 md:py-12 lg:py-16">
           <div className="text-center text-foreground w-full max-w-4xl mx-auto">
             {slides[currentSlide].title && (
               <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 animate-fade-in-up">
