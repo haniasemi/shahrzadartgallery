@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import HeroSlider from '@/components/HeroSlider';
 
 export default function Home() {
   const categories = [
@@ -36,28 +37,8 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-black/50 to-transparent z-10"></div>
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20"></div>
-        
-        <div className="relative z-20 text-center text-foreground px-4 max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-fade-in-up">
-            <span className="golden-text">گالری هنری شهرزاد</span>
-          </h1>
-          <p className="text-xl md:text-2xl mb-8 text-muted-foreground animate-fade-in-up" style={{animationDelay: '0.2s'}}>
-            هنر دست‌ساز ایرانی با کیفیت و زیبایی منحصر به فرد
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up" style={{animationDelay: '0.4s'}}>
-            <Button size="lg" className="btn-golden text-lg px-8 py-3">
-              <Link href="/products">مشاهده محصولات</Link>
-            </Button>
-            <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground text-lg px-8 py-3">
-              <Link href="/custom-order">سفارش اختصاصی</Link>
-            </Button>
-          </div>
-        </div>
-      </section>
+      {/* Hero Slider */}
+      <HeroSlider />
 
       {/* About Section */}
       <section className="py-20 bg-secondary/30">

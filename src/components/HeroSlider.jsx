@@ -69,7 +69,7 @@ const HeroSlider = () => {
             {slide.image ? (
               <Image
                 src={slide.image}
-                alt={slide.title}
+                alt={slide.title || "گالری هنری شهرزاد"}
                 fill
                 className="object-cover"
                 priority={index === 0}
@@ -77,8 +77,12 @@ const HeroSlider = () => {
             ) : (
               <div className="w-full h-full bg-gradient-to-br from-primary/30 to-secondary/30"></div>
             )}
-            <div className="absolute inset-0 bg-gradient-to-br from-black/60 to-transparent"></div>
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20"></div>
+            {slide.showContent && (
+              <>
+                <div className="absolute inset-0 bg-gradient-to-br from-black/60 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20"></div>
+              </>
+            )}
           </div>
         </div>
       ))}
