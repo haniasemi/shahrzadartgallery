@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 
 export default function AboutPage() {
@@ -112,8 +113,14 @@ export default function AboutPage() {
                 </p>
               </div>
             </div>
-            <div className="aspect-square bg-gradient-to-br from-secondary to-primary/20 rounded-lg flex items-center justify-center">
-              <span className="text-8xl opacity-50">🏺</span>
+            <div className="relative aspect-square rounded-lg overflow-hidden shadow-lg">
+              <Image
+                src="/pic shahrzad.jpg"
+                alt="شهرزاد - بنیان‌گذار گالری هنری شهرزاد"
+                fill
+                className="object-cover object-center"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
             </div>
           </div>
         </section>

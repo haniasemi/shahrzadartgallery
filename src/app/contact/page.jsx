@@ -44,7 +44,7 @@ export default function ContactPage() {
     },
     {
       title: 'تلفن',
-      description: '۰۲۱-۱۲۳۴۵۶۷۸',
+      description: '۰۹۱۹۵۱۷۳۸۶۸',
       icon: '📞',
       details: ['شنبه تا پنج‌شنبه: ۹ صبح تا ۶ عصر', 'جمعه: ۱۰ صبح تا ۲ ظهر']
     },
@@ -65,7 +65,7 @@ export default function ContactPage() {
   const socialMedia = [
     { name: 'اینستاگرام', handle: '@shahrzadartgallery', icon: '📷' },
     { name: 'تلگرام', handle: '@shahrzadartgallery', icon: '✈️' },
-    { name: 'واتساپ', handle: '+98 912 345 6789', icon: '💬' }
+    { name: 'واتساپ', handle: '۰۹۱۹۵۱۷۳۸۶۸', icon: '💬', link: 'https://wa.me/989195173868' }
   ];
 
   return (
@@ -186,7 +186,16 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <h3 className="text-lg font-semibold mb-2">{info.title}</h3>
-                        <p className="text-primary font-medium mb-2">{info.description}</p>
+                        {info.title === 'تلفن' ? (
+                          <a 
+                            href="tel:09195173868" 
+                            className="text-primary font-medium mb-2 hover:underline block"
+                          >
+                            {info.description}
+                          </a>
+                        ) : (
+                          <p className="text-primary font-medium mb-2">{info.description}</p>
+                        )}
                         {info.details.map((detail, index) => (
                           <p key={index} className="text-sm text-muted-foreground">{detail}</p>
                         ))}
@@ -206,15 +215,33 @@ export default function ContactPage() {
                 
                 <div className="space-y-4">
                   {socialMedia.map((social) => (
-                    <div key={social.name} className="flex items-center gap-3">
-                      <div className="w-10 h-10 golden-gradient rounded-full flex items-center justify-center">
-                        <span className="text-lg">{social.icon}</span>
+                    social.link ? (
+                      <a 
+                        key={social.name} 
+                        href={social.link} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-3 hover:opacity-80 transition-opacity"
+                      >
+                        <div className="w-10 h-10 golden-gradient rounded-full flex items-center justify-center">
+                          <span className="text-lg">{social.icon}</span>
+                        </div>
+                        <div>
+                          <p className="font-semibold">{social.name}</p>
+                          <p className="text-sm text-muted-foreground">{social.handle}</p>
+                        </div>
+                      </a>
+                    ) : (
+                      <div key={social.name} className="flex items-center gap-3">
+                        <div className="w-10 h-10 golden-gradient rounded-full flex items-center justify-center">
+                          <span className="text-lg">{social.icon}</span>
+                        </div>
+                        <div>
+                          <p className="font-semibold">{social.name}</p>
+                          <p className="text-sm text-muted-foreground">{social.handle}</p>
+                        </div>
                       </div>
-                      <div>
-                        <p className="font-semibold">{social.name}</p>
-                        <p className="text-sm text-muted-foreground">{social.handle}</p>
-                      </div>
-                    </div>
+                    )
                   ))}
                 </div>
               </CardContent>

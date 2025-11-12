@@ -6,7 +6,8 @@ import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Menu, X, Search, User, ShoppingCart, ChevronLeft } from 'lucide-react';
+import { Menu, X, Search, User, ShoppingCart, ChevronLeft, Phone } from 'lucide-react';
+import Tooltip from '@/components/Tooltip';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -102,6 +103,16 @@ const Header = () => {
 
           {/* ورود/ثبت نام و سبد خرید */}
           <div className="flex items-center space-x-4 space-x-reverse">
+            {/* شماره تماس - دسکتاپ: آیکون + "تماس"، موبایل: فقط آیکون */}
+            <Tooltip content="۰۹۱۹۵۱۷۳۸۶۸" position="bottom">
+              <a 
+                href="tel:09195173868" 
+                className="flex items-center space-x-2 space-x-reverse text-foreground hover:text-primary transition-colors duration-200"
+              >
+                <Phone className="h-5 w-5" />
+                <span className="hidden md:block text-sm font-medium">تماس</span>
+              </a>
+            </Tooltip>
             {/* ورود/ثبت نام */}
             <Link href="/login" className="flex items-center space-x-2 space-x-reverse text-foreground hover:text-primary transition-colors duration-200">
               <User className="h-5 w-5" />
@@ -152,6 +163,14 @@ const Header = () => {
 
                   {/* ورود/ثبت نام و سبد خرید در موبایل */}
                   <div className="flex space-x-4 space-x-reverse mb-6">
+                    {/* شماره تماس - فقط آیکون در موبایل */}
+                    <a 
+                      href="tel:09195173868" 
+                      className="flex items-center justify-center text-foreground hover:text-primary transition-colors duration-200"
+                      aria-label="تماس با ما"
+                    >
+                      <Phone className="h-5 w-5" />
+                    </a>
                     <Link href="/login" className="flex items-center space-x-2 space-x-reverse text-foreground hover:text-primary transition-colors duration-200">
                       <User className="h-5 w-5" />
                       <span className="text-sm font-medium">ورود/ثبت نام</span>
