@@ -56,7 +56,7 @@ const HeroSlider = () => {
   };
 
   return (
-    <section className="relative h-screen overflow-hidden">
+    <section className="relative h-screen min-h-[500px] max-h-[100vh] overflow-hidden">
       {/* اسلایدها */}
       {slides.map((slide, index) => (
         <div
@@ -71,7 +71,8 @@ const HeroSlider = () => {
                 src={slide.image}
                 alt={slide.title || "گالری هنری شهرزاد"}
                 fill
-                className="object-cover"
+                className="object-cover object-center"
+                sizes="100vw"
                 priority={index === 0}
               />
             ) : (
@@ -89,22 +90,22 @@ const HeroSlider = () => {
 
       {/* محتوای اسلاید */}
       {slides[currentSlide].showContent && (
-        <div className="relative z-20 h-full flex items-center justify-center">
-          <div className="text-center text-foreground px-4 max-w-4xl mx-auto">
+        <div className="relative z-20 h-full flex items-center justify-center px-4 py-8 sm:py-16">
+          <div className="text-center text-foreground w-full max-w-4xl mx-auto">
             {slides[currentSlide].title && (
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-fade-in-up">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 animate-fade-in-up">
                 <span className="golden-text">{slides[currentSlide].title}</span>
               </h1>
             )}
             {slides[currentSlide].subtitle && (
-              <p className="text-xl md:text-2xl mb-8 text-white/90 animate-fade-in-up" style={{animationDelay: '0.2s'}}>
+              <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mb-6 sm:mb-8 text-white/90 px-2 animate-fade-in-up" style={{animationDelay: '0.2s'}}>
                 {slides[currentSlide].subtitle}
               </p>
             )}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up" style={{animationDelay: '0.4s'}}>
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center animate-fade-in-up" style={{animationDelay: '0.4s'}}>
               {slides[currentSlide].cta && (
-                <Button size="lg" className="btn-golden text-lg px-8 py-3">
-                  <Link href={slides[currentSlide].ctaLink}>{slides[currentSlide].cta}</Link>
+                <Button size="lg" className="btn-golden text-base sm:text-lg px-6 sm:px-8 py-2 sm:py-3 w-full sm:w-auto">
+                  <Link href={slides[currentSlide].ctaLink} className="w-full block">{slides[currentSlide].cta}</Link>
                 </Button>
               )}
             </div>
@@ -115,27 +116,27 @@ const HeroSlider = () => {
       {/* دکمه‌های ناوبری */}
       <button
         onClick={prevSlide}
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 z-30 bg-white/20 hover:bg-white/30 text-white p-3 rounded-full transition-all duration-200 backdrop-blur-sm"
+        className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 z-30 bg-white/20 hover:bg-white/30 text-white p-2 sm:p-3 rounded-full transition-all duration-200 backdrop-blur-sm"
         aria-label="اسلاید قبلی"
       >
-        <ChevronRight className="h-6 w-6" />
+        <ChevronRight className="h-4 w-4 sm:h-6 sm:w-6" />
       </button>
       
       <button
         onClick={nextSlide}
-        className="absolute left-4 top-1/2 transform -translate-y-1/2 z-30 bg-white/20 hover:bg-white/30 text-white p-3 rounded-full transition-all duration-200 backdrop-blur-sm"
+        className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 z-30 bg-white/20 hover:bg-white/30 text-white p-2 sm:p-3 rounded-full transition-all duration-200 backdrop-blur-sm"
         aria-label="اسلاید بعدی"
       >
-        <ChevronLeft className="h-6 w-6" />
+        <ChevronLeft className="h-4 w-4 sm:h-6 sm:w-6" />
       </button>
 
       {/* نقاط ناوبری */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30 flex space-x-2 space-x-reverse">
+      <div className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 z-30 flex space-x-2 space-x-reverse">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentSlide(index)}
-            className={`w-3 h-3 rounded-full transition-all duration-200 ${
+            className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-200 ${
               index === currentSlide 
                 ? 'bg-white scale-125' 
                 : 'bg-white/50 hover:bg-white/75'
