@@ -101,7 +101,7 @@ const Footer = () => {
             <div className="flex space-x-4 space-x-reverse">
               {/* تلگرام */}
               <a 
-                href="https://t.me/shahrzadartgallery" 
+                href="https://t.me/decorative_mirrorss" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-10 h-10 golden-gradient rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-200"
@@ -113,7 +113,7 @@ const Footer = () => {
               </a>
               {/* واتساپ */}
               <a 
-                href="https://wa.me/989195173868" 
+                href="https://wa.me/message/KGQKHVMNAVWFM1" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-10 h-10 golden-gradient rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-200"
@@ -125,7 +125,7 @@ const Footer = () => {
               </a>
               {/* اینستاگرام */}
               <a 
-                href="https://instagram.com/shahrzadartgallery" 
+                href="https://www.instagram.com/aynantic_sh_y" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-10 h-10 golden-gradient rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-200"

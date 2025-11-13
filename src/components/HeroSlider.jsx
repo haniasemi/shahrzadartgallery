@@ -68,18 +68,18 @@ const HeroSlider = () => {
           <div className="relative w-full h-full">
             {slide.image ? (
               <>
-                <Image
-                  src={slide.image}
+              <Image
+                src={slide.image}
                   alt={slide.title || "گالری هنری شهرزاد"}
-                  fill
+                fill
                   className={`object-center ${
                     slide.showContent 
                       ? 'object-cover' 
                       : 'object-contain sm:object-cover'
                   }`}
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 100vw"
-                  priority={index === 0}
-                />
+                priority={index === 0}
+              />
                 {!slide.showContent && (
                   <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent"></div>
                 )}
@@ -89,8 +89,8 @@ const HeroSlider = () => {
             )}
             {slide.showContent && (
               <>
-                <div className="absolute inset-0 bg-gradient-to-br from-black/60 to-transparent"></div>
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-black/60 to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20"></div>
               </>
             )}
           </div>
@@ -103,19 +103,19 @@ const HeroSlider = () => {
           <div className="text-center text-foreground w-full max-w-4xl mx-auto">
             {slides[currentSlide].title && (
               <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 animate-fade-in-up">
-                <span className="golden-text">{slides[currentSlide].title}</span>
-              </h1>
+              <span className="golden-text">{slides[currentSlide].title}</span>
+            </h1>
             )}
             {slides[currentSlide].subtitle && (
               <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mb-6 sm:mb-8 text-white/90 px-2 animate-fade-in-up" style={{animationDelay: '0.2s'}}>
-                {slides[currentSlide].subtitle}
-              </p>
+              {slides[currentSlide].subtitle}
+            </p>
             )}
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center animate-fade-in-up" style={{animationDelay: '0.4s'}}>
               {slides[currentSlide].cta && (
                 <Button size="lg" className="btn-golden text-base sm:text-lg px-6 sm:px-8 py-2 sm:py-3 w-full sm:w-auto">
                   <Link href={slides[currentSlide].ctaLink} className="w-full block">{slides[currentSlide].cta}</Link>
-                </Button>
+              </Button>
               )}
             </div>
           </div>

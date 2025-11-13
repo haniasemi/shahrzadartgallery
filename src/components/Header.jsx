@@ -181,13 +181,13 @@ const Header = () => {
                       <span className="bg-primary text-primary-foreground text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
                     </Link>
                   </div>
-                </div>
-
+                  </div>
+                  
                 {/* منو با اسکرول مجزا */}
                 <div className="flex-1 overflow-y-auto">
                   <div className="space-y-4">
-                    {menuItems.map((item) => (
-                      <div key={item.name}>
+                  {menuItems.map((item) => (
+                    <div key={item.name}>
                         {item.name ? (
                           <div>
                             {item.submenu ? (
@@ -203,34 +203,34 @@ const Header = () => {
                                 />
                               </button>
                             ) : (
-                              <Link 
-                                href={item.href}
-                                className="block py-2 text-foreground hover:text-primary transition-colors duration-200 font-medium"
-                                onClick={() => setIsOpen(false)}
-                              >
-                                {item.name}
-                              </Link>
+                      <Link 
+                        href={item.href}
+                        className="block py-2 text-foreground hover:text-primary transition-colors duration-200 font-medium"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        {item.name}
+                      </Link>
                             )}
                             {item.submenu && openSubmenu === item.name && (
                               <div className="mr-4 mt-2 space-y-1 animate-fade-in-up">
-                                {item.submenu.map((subItem) => (
-                                  <Link
-                                    key={subItem.name}
-                                    href={subItem.href}
-                                    className="block py-1 text-sm text-muted-foreground hover:text-primary transition-colors duration-200"
-                                    onClick={() => setIsOpen(false)}
-                                  >
-                                    {subItem.name}
-                                  </Link>
-                                ))}
-                              </div>
+                          {item.submenu.map((subItem) => (
+                            <Link
+                              key={subItem.name}
+                              href={subItem.href}
+                              className="block py-1 text-sm text-muted-foreground hover:text-primary transition-colors duration-200"
+                              onClick={() => setIsOpen(false)}
+                            >
+                              {subItem.name}
+                            </Link>
+                          ))}
+                        </div>
                             )}
                           </div>
                         ) : (
                           <div className="h-2"></div>
-                        )}
-                      </div>
-                    ))}
+                      )}
+                    </div>
+                  ))}
                   </div>
                 </div>
               </SheetContent>
@@ -244,12 +244,12 @@ const Header = () => {
             {menuItems.map((item) => (
               <div key={item.name} className="relative group">
                 {item.name ? (
-                  <Link 
-                    href={item.href}
-                    className="text-foreground hover:text-primary transition-colors duration-200 font-medium py-2"
-                  >
-                    {item.name}
-                  </Link>
+                <Link 
+                  href={item.href}
+                  className="text-foreground hover:text-primary transition-colors duration-200 font-medium py-2"
+                >
+                  {item.name}
+                </Link>
                 ) : (
                   <div className="w-4"></div>
                 )}
