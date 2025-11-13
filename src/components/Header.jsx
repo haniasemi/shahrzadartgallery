@@ -96,18 +96,18 @@ const Header = () => {
       <div className="container mx-auto px-4 relative">
         {/* خط اول: لوگو و نام سایت */}
         <div className="flex h-[80px] sm:h-20 items-center justify-center py-2">
-          <Link href="/" className="flex items-center gap-0 sm:space-x-3 sm:space-x-reverse">
-            <div className="relative h-16 w-20 sm:h-20 sm:w-24">
+          <Link href="/" className="flex items-center gap-[5px] sm:space-x-3 sm:space-x-reverse">
+            <div className="relative h-12 w-16 sm:h-16 sm:w-20 -mt-[20px]">
               <Image
                 src="/photo_2025-09-06_06-38-01.jpg"
                 alt="لوگوی گالری هنری شهرزاد"
-                width={80}
-                height={80}
+                width={64}
+                height={64}
                 className="object-contain"
                 priority
               />
             </div>
-            <span className="text-xl sm:text-2xl md:text-3xl font-bold golden-text whitespace-nowrap">گالری هنری شهرزاد</span>
+            <span className="text-lg sm:text-xl md:text-2xl font-bold golden-text whitespace-nowrap">گالری هنری شهرزاد</span>
           </Link>
         </div>
 
