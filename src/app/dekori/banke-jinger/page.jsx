@@ -7,27 +7,40 @@ import { Badge } from '@/components/ui/badge';
 const products = [
   {
     id: 1,
-    title: 'شمع مناسبتی',
-    description: 'شمع مناسبتی با رایحه خوش و طراحی زیبا',
+    title: 'بانکه و جینجر ۱',
+    description: 'بانکه و جینجر زیبا با طراحی منحصر به فرد',
     price: '۲۵۰,۰۰۰',
-    image: '/monasebati/photo_2025-09-06_08-48-45.jpg',
-    fragrance: 'رز',
-    occasion: 'مناسبتی',
-    burnTime: '۶۰ ساعت',
+    image: '/jinjer/photo_2025-09-06_08-47-56.jpg',
+    size: 'متوسط',
+    material: 'سرامیک',
+    style: 'دکوری',
+    inStock: true
+  },
+  {
+    id: 2,
+    title: 'بانکه و جینجر ۲',
+    description: 'بانکه و جینجر زیبا با طراحی منحصر به فرد',
+    price: '۲۸۰,۰۰۰',
+    image: '/jinjer/photo_2025-09-06_08-48-10.jpg',
+    size: 'متوسط',
+    material: 'سرامیک',
+    style: 'دکوری',
+    inStock: true
+  },
+  {
+    id: 3,
+    title: 'بانکه و جینجر ۳',
+    description: 'بانکه و جینجر زیبا با طراحی منحصر به فرد',
+    price: '۳۲۰,۰۰۰',
+    image: '/jinjer/photo_2025-09-06_08-48-12.jpg',
+    size: 'متوسط',
+    material: 'سرامیک',
+    style: 'دکوری',
     inStock: true
   }
 ];
 
-const occasions = [
-  { name: 'عروسی', icon: '💒', description: 'شمع‌های عروسی' },
-  { name: 'تولد', icon: '🎂', description: 'شمع‌های تولد' },
-  { name: 'کریسمس', icon: '🎄', description: 'شمع‌های کریسمس' },
-  { name: 'نوروز', icon: '🌸', description: 'شمع‌های نوروزی' },
-  { name: 'ولنتاین', icon: '💕', description: 'شمع‌های ولنتاین' },
-  { name: 'روز مادر', icon: '👩‍👧‍👦', description: 'شمع‌های روز مادر' }
-];
-
-export default function MonasebatiPage() {
+export default function BankeJingerPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background to-secondary/20">
       {/* Breadcrumb */}
@@ -35,9 +48,9 @@ export default function MonasebatiPage() {
         <nav className="flex items-center space-x-2 space-x-reverse text-sm text-muted-foreground">
           <Link href="/" className="hover:text-primary transition-colors">خانه</Link>
           <span>/</span>
-          <Link href="/sham-organic" className="hover:text-primary transition-colors">شمع ارگانیک</Link>
+          <Link href="/dekori" className="hover:text-primary transition-colors">دکوری</Link>
           <span>/</span>
-          <span className="text-foreground">شمع مناسبتی</span>
+          <span className="text-foreground">بانکه و جینجر</span>
         </nav>
       </div>
 
@@ -45,40 +58,22 @@ export default function MonasebatiPage() {
       <section className="py-12 px-4">
         <div className="container mx-auto text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6 animate-fade-in-up">
-            شمع‌های مناسبتی
+            بانکه و جینجر
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8 animate-fade-in-up">
-            مجموعه‌ای از شمع‌های مناسبتی که برای مناسبت‌های خاص طراحی شده‌اند. 
-            هر شمع با رایحه‌های خوشبو و طراحی‌های زیبا برای ایجاد خاطرات به یاد ماندنی ساخته شده است.
+            مجموعه‌ای زیبا و متنوع از بانکه و جینجر که برای تزئین و زیباسازی محیط طراحی شده‌اند. 
+            هر محصول با دقت و ظرافت خاصی ساخته شده تا زیبایی را به فضای شما بیاورد.
           </p>
           <div className="flex justify-center gap-4 animate-fade-in-up">
             <Badge variant="secondary" className="text-lg px-6 py-2">
-              مناسبتی
+              دکوری
             </Badge>
             <Badge variant="outline" className="text-lg px-6 py-2">
-              رایحه خوش
+              زیبا
             </Badge>
             <Badge variant="secondary" className="text-lg px-6 py-2">
-              طراحی زیبا
+              کاربردی
             </Badge>
-          </div>
-        </div>
-      </section>
-
-      {/* Occasions Section */}
-      <section className="py-8 px-4 bg-secondary/10">
-        <div className="container mx-auto">
-          <h2 className="text-2xl font-bold text-center mb-8 text-foreground">
-            مناسبت‌های مختلف
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            {occasions.map((occasion) => (
-              <div key={occasion.name} className="text-center p-4 bg-white rounded-lg shadow-sm">
-                <div className="text-2xl mb-2">{occasion.icon}</div>
-                <h3 className="text-sm font-medium mb-1">{occasion.name}</h3>
-                <p className="text-xs text-muted-foreground">{occasion.description}</p>
-              </div>
-            ))}
           </div>
         </div>
       </section>
@@ -105,7 +100,7 @@ export default function MonasebatiPage() {
                   )}
                   <div className="absolute top-4 left-4">
                     <Badge variant="outline" className="text-xs">
-                      {product.occasion}
+                      {product.style}
                     </Badge>
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -121,16 +116,12 @@ export default function MonasebatiPage() {
                 <CardContent>
                   <div className="space-y-3">
                     <div className="flex justify-between items-center">
-                      <span className="text-sm text-muted-foreground">رایحه:</span>
-                      <span className="text-sm font-medium">{product.fragrance}</span>
+                      <span className="text-sm text-muted-foreground">اندازه:</span>
+                      <span className="text-sm font-medium">{product.size}</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-sm text-muted-foreground">مناسبت:</span>
-                      <span className="text-sm font-medium">{product.occasion}</span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm text-muted-foreground">زمان سوختن:</span>
-                      <span className="text-sm font-medium">{product.burnTime}</span>
+                      <span className="text-sm text-muted-foreground">جنس:</span>
+                      <span className="text-sm font-medium">{product.material}</span>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-sm text-muted-foreground">قیمت:</span>
@@ -151,46 +142,14 @@ export default function MonasebatiPage() {
         </div>
       </section>
 
-      {/* Benefits Section */}
-      <section className="py-16 px-4 bg-secondary/10">
-        <div className="container mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12 text-foreground">
-            فواید شمع‌های مناسبتی
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center p-6">
-              <div className="text-4xl mb-4">🎉</div>
-              <h3 className="text-xl font-semibold mb-2 text-foreground">ایجاد فضای خاص</h3>
-              <p className="text-muted-foreground">
-                ایجاد فضای خاص و به یاد ماندنی برای مناسبت‌های مهم
-              </p>
-            </div>
-            <div className="text-center p-6">
-              <div className="text-4xl mb-4">💝</div>
-              <h3 className="text-xl font-semibold mb-2 text-foreground">هدیه مناسب</h3>
-              <p className="text-muted-foreground">
-                انتخاب عالی برای هدیه دادن در مناسبت‌های مختلف
-              </p>
-            </div>
-            <div className="text-center p-6">
-              <div className="text-4xl mb-4">😌</div>
-              <h3 className="text-xl font-semibold mb-2 text-foreground">آرامش و ریلکسیشن</h3>
-              <p className="text-muted-foreground">
-                رایحه‌های طبیعی باعث آرامش و کاهش استرس می‌شوند
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* CTA Section */}
       <section className="py-16 px-4">
         <div className="container mx-auto text-center">
           <h2 className="text-3xl font-bold mb-6 golden-text">
-            شمع مناسبتی مورد نظر خود را پیدا نکردید؟
+            محصول مورد نظر خود را پیدا نکردید؟
           </h2>
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            می‌توانید شمع مناسبتی اختصاصی خود را با رایحه و طراحی دلخواه سفارش دهید
+            می‌توانید محصول اختصاصی خود را با طراحی و اندازه دلخواه سفارش دهید
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="btn-golden text-lg px-8 py-3">
@@ -205,3 +164,4 @@ export default function MonasebatiPage() {
     </div>
   );
 }
+

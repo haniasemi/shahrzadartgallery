@@ -7,71 +7,40 @@ import { Badge } from '@/components/ui/badge';
 const products = [
   {
     id: 1,
-    title: 'جاشمعی کلاسیک',
-    description: 'جاشمعی کلاسیک با طراحی سنتی و لعاب محافظ',
+    title: 'جاشمعی دکوری ۱',
+    description: 'جاشمعی دکوری زیبا با طراحی منحصر به فرد',
     price: '۱۸۰,۰۰۰',
-    image: '/jaShamiSeramiki/photo_4_2025-09-06_08-47-07.jpg',
+    image: '/jaShamiDecori/photo_2025-09-06_08-48-00.jpg',
     size: 'قطر ۱۲ سانتی‌متر',
-    material: 'سرامیک با لعاب',
-    style: 'کلاسیک',
+    material: 'سرامیک',
+    style: 'دکوری',
     inStock: true
   },
   {
     id: 2,
-    title: 'جاشمعی مدرن',
-    description: 'جاشمعی مدرن با طراحی مینیمال و رنگ‌های شاد',
+    title: 'جاشمعی دکوری ۲',
+    description: 'جاشمعی دکوری زیبا با طراحی منحصر به فرد',
     price: '۲۲۰,۰۰۰',
-    image: '/jaShamiSeramiki/photo_5_2025-09-06_08-47-07.jpg',
+    image: '/jaShamiDecori/photo_2025-09-06_08-48-05.jpg',
     size: 'قطر ۱۵ سانتی‌متر',
-    material: 'سرامیک با لعاب',
-    style: 'مدرن',
+    material: 'سرامیک',
+    style: 'دکوری',
     inStock: true
   },
   {
     id: 3,
-    title: 'جاشمعی تزئینی',
-    description: 'جاشمعی تزئینی با نقوش هنری و رنگ‌آمیزی دستی',
+    title: 'جاشمعی دکوری ۳',
+    description: 'جاشمعی دکوری زیبا با طراحی منحصر به فرد',
     price: '۲۸۰,۰۰۰',
-    image: '/jaShamiSeramiki/photo_7_2025-09-06_08-47-07.jpg',
+    image: '/jaShamiDecori/photo_2025-09-06_08-48-08.jpg',
     size: 'قطر ۱۰ سانتی‌متر',
-    material: 'سرامیک با لعاب',
-    style: 'تزئینی',
-    inStock: true
-  },
-  {
-    id: 4,
-    title: 'جاشمعی رومیزی',
-    description: 'جاشمعی رومیزی با طراحی زیبا و کاربردی',
-    price: '۱۵۰,۰۰۰',
-    image: '/jaShamiSeramiki/photo_8_2025-09-06_08-47-07.jpg',
-    size: 'قطر ۸ سانتی‌متر',
-    material: 'سرامیک با لعاب',
-    style: 'رومیزی',
-    inStock: true
-  },
-  {
-    id: 5,
-    title: 'جاشمعی دیواری',
-    description: 'جاشمعی دیواری با طراحی خاص و نصب آسان',
-    price: '۳۲۰,۰۰۰',
-    image: '/jaShamiSeramiki/photo_2025-09-06_08-48-43.jpg',
-    size: 'قطر ۱۸ سانتی‌متر',
-    material: 'سرامیک با لعاب',
-    style: 'دیواری',
+    material: 'سرامیک',
+    style: 'دکوری',
     inStock: true
   }
 ];
 
-const styles = [
-  { name: 'کلاسیک', icon: '🏛️', description: 'طراحی کلاسیک و سنتی' },
-  { name: 'مدرن', icon: '✨', description: 'طراحی مدرن و مینیمال' },
-  { name: 'تزئینی', icon: '🎨', description: 'نقوش هنری و تزئینی' },
-  { name: 'رومیزی', icon: '🕯️', description: 'مناسب برای میز' },
-  { name: 'دیواری', icon: '🪟', description: 'نصب روی دیوار' },
-  { name: 'ایستاده', icon: '🏮', description: 'جاشمعی ایستاده' }
-];
-
-export default function JashamiPage() {
+export default function JashamiDecoriPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background to-secondary/20">
       {/* Breadcrumb */}
@@ -79,7 +48,7 @@ export default function JashamiPage() {
         <nav className="flex items-center space-x-2 space-x-reverse text-sm text-muted-foreground">
           <Link href="/" className="hover:text-primary transition-colors">خانه</Link>
           <span>/</span>
-          <Link href="/zoroof-seramiki" className="hover:text-primary transition-colors">ظروف سرامیکی</Link>
+          <Link href="/dekori" className="hover:text-primary transition-colors">دکوری</Link>
           <span>/</span>
           <span className="text-foreground">جاشمعی</span>
         </nav>
@@ -89,40 +58,22 @@ export default function JashamiPage() {
       <section className="py-12 px-4">
         <div className="container mx-auto text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6 animate-fade-in-up">
-            جاشمعی‌های سرامیکی
+            جاشمعی‌های دکوری
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8 animate-fade-in-up">
-            مجموعه‌ای زیبا و متنوع از جاشمعی‌های سرامیکی که برای نگهداری شمع طراحی شده‌اند. 
+            مجموعه‌ای زیبا و متنوع از جاشمعی‌های دکوری که برای نگهداری شمع طراحی شده‌اند. 
             هر جاشمعی با دقت و ظرافت خاصی ساخته شده تا زیبایی و نور را به فضای شما بیاورد.
           </p>
           <div className="flex justify-center gap-4 animate-fade-in-up">
             <Badge variant="secondary" className="text-lg px-6 py-2">
-              سرامیکی
+              دکوری
             </Badge>
             <Badge variant="outline" className="text-lg px-6 py-2">
-              نورپردازی
+              زیبا
             </Badge>
             <Badge variant="secondary" className="text-lg px-6 py-2">
-              تزئینی
+              کاربردی
             </Badge>
-          </div>
-        </div>
-      </section>
-
-      {/* Styles Section */}
-      <section className="py-8 px-4 bg-secondary/10">
-        <div className="container mx-auto">
-          <h2 className="text-2xl font-bold text-center mb-8 text-foreground">
-            سبک‌های طراحی
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            {styles.map((style) => (
-              <div key={style.name} className="text-center p-4 bg-white rounded-lg shadow-sm">
-                <div className="text-2xl mb-2">{style.icon}</div>
-                <h3 className="text-sm font-medium mb-1">{style.name}</h3>
-                <p className="text-xs text-muted-foreground">{style.description}</p>
-              </div>
-            ))}
           </div>
         </div>
       </section>
@@ -173,10 +124,6 @@ export default function JashamiPage() {
                       <span className="text-sm font-medium">{product.material}</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-sm text-muted-foreground">سبک:</span>
-                      <span className="text-sm font-medium">{product.style}</span>
-                    </div>
-                    <div className="flex justify-between items-center">
                       <span className="text-sm text-muted-foreground">قیمت:</span>
                       <span className="text-lg font-bold text-primary">{product.price} تومان</span>
                     </div>
@@ -191,38 +138,6 @@ export default function JashamiPage() {
                 </CardContent>
               </Card>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section className="py-16 px-4 bg-secondary/10">
-        <div className="container mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12 text-foreground">
-            ویژگی‌های جاشمعی‌های سرامیکی ما
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center p-6">
-              <div className="text-4xl mb-4">🕯️</div>
-              <h3 className="text-xl font-semibold mb-2 text-foreground">نورپردازی زیبا</h3>
-              <p className="text-muted-foreground">
-                نورپردازی زیبا و ملایم برای ایجاد فضای آرامش‌بخش
-              </p>
-            </div>
-            <div className="text-center p-6">
-              <div className="text-4xl mb-4">🏠</div>
-              <h3 className="text-xl font-semibold mb-2 text-foreground">سازگار با محیط</h3>
-              <p className="text-muted-foreground">
-                محصولاتی که با هر نوع دکوراسیون و فضای خانه سازگار هستند
-              </p>
-            </div>
-            <div className="text-center p-6">
-              <div className="text-4xl mb-4">💎</div>
-              <h3 className="text-xl font-semibold mb-2 text-foreground">کیفیت ممتاز</h3>
-              <p className="text-muted-foreground">
-                استفاده از بهترین مواد اولیه و تکنیک‌های پیشرفته
-              </p>
-            </div>
           </div>
         </div>
       </section>
@@ -249,3 +164,4 @@ export default function JashamiPage() {
     </div>
   );
 }
+

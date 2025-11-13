@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -9,7 +10,7 @@ const products = [
     title: 'گلدان سرامیکی کلاسیک',
     description: 'گلدان سرامیکی با طراحی کلاسیک و لعاب محافظ',
     price: '۳۲۰,۰۰۰',
-    image: '/api/placeholder/300/400',
+    image: '/goldan/photo_2025-09-06_08-48-14.jpg',
     size: 'ارتفاع ۳۰ سانتی‌متر',
     material: 'سرامیک با لعاب',
     style: 'کلاسیک',
@@ -20,7 +21,7 @@ const products = [
     title: 'گلدان فلزی مدرن',
     description: 'گلدان فلزی با طراحی مدرن و پوشش ضد زنگ',
     price: '۴۵۰,۰۰۰',
-    image: '/api/placeholder/300/400',
+    image: '/goldan/photo_2025-09-06_08-48-17.jpg',
     size: 'ارتفاع ۳۵ سانتی‌متر',
     material: 'فلز ضد زنگ',
     style: 'مدرن',
@@ -31,18 +32,18 @@ const products = [
     title: 'گلدان شیشه‌ای شفاف',
     description: 'گلدان شیشه‌ای شفاف با طراحی زیبا و کاربردی',
     price: '۲۸۰,۰۰۰',
-    image: '/api/placeholder/300/400',
+    image: '/goldan/photo_2025-09-06_08-48-20.jpg',
     size: 'ارتفاع ۲۵ سانتی‌متر',
     material: 'شیشه سکوریت',
     style: 'مدرن',
-    inStock: false
+    inStock: true
   },
   {
     id: 4,
     title: 'گلدان چوبی طبیعی',
     description: 'گلدان چوبی با طراحی طبیعی و بافت زیبا',
     price: '۳۸۰,۰۰۰',
-    image: '/api/placeholder/300/400',
+    image: '/goldan/photo_2025-09-06_08-48-22.jpg',
     size: 'ارتفاع ۲۸ سانتی‌متر',
     material: 'چوب طبیعی',
     style: 'طبیعی',
@@ -53,21 +54,10 @@ const products = [
     title: 'گلدان سنگی لوکس',
     description: 'گلدان سنگی با طراحی لوکس و بافت طبیعی',
     price: '۶۵۰,۰۰۰',
-    image: '/api/placeholder/300/400',
+    image: '/goldan/photo_2025-09-06_08-48-25.jpg',
     size: 'ارتفاع ۴۰ سانتی‌متر',
     material: 'سنگ طبیعی',
     style: 'لوکس',
-    inStock: true
-  },
-  {
-    id: 6,
-    title: 'گلدان بامبو',
-    description: 'گلدان بامبو با طراحی طبیعی و مقاوم',
-    price: '۲۲۰,۰۰۰',
-    image: '/api/placeholder/300/400',
-    size: 'ارتفاع ۲۰ سانتی‌متر',
-    material: 'بامبو',
-    style: 'طبیعی',
     inStock: true
   }
 ];
@@ -142,10 +132,13 @@ export default function GoldanPage() {
             {products.map((product) => (
               <Card key={product.id} className="card-elegant hover:shadow-2xl transition-all duration-300 hover:scale-105 group">
                 <div className="relative overflow-hidden rounded-t-lg">
-                  <div className="aspect-[3/4] bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
-                    <div className="text-6xl text-primary/40 group-hover:text-primary/60 transition-colors">
-                      🪴
-                    </div>
+                  <div className="aspect-[3/4] relative">
+                    <Image
+                      src={product.image}
+                      alt={product.title}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-300"
+                    />
                   </div>
                   {!product.inStock && (
                     <div className="absolute top-4 right-4">

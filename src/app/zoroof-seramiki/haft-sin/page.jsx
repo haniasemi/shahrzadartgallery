@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -9,7 +10,7 @@ const products = [
     title: 'سینی هفت سین کلاسیک',
     description: 'سینی هفت سین با طراحی کلاسیک و نقوش سنتی ایرانی',
     price: '۱,۲۰۰,۰۰۰',
-    image: '/api/placeholder/300/400',
+    image: '/haftSin/photo_1_2025-09-06_08-47-07.jpg',
     size: '۵۰ × ۷۰ سانتی‌متر',
     material: 'سرامیک با لعاب',
     style: 'کلاسیک',
@@ -20,7 +21,7 @@ const products = [
     title: 'سبزه‌دان سرامیکی',
     description: 'سبزه‌دان سرامیکی با طراحی زیبا و کاربردی',
     price: '۳۵۰,۰۰۰',
-    image: '/api/placeholder/300/400',
+    image: '/haftSin/photo_2_2025-09-06_08-47-07.jpg',
     size: 'قطر ۲۰ سانتی‌متر',
     material: 'سرامیک با لعاب',
     style: 'سنتی',
@@ -31,43 +32,21 @@ const products = [
     title: 'سنجد دان',
     description: 'سنجد دان با طراحی سنتی و رنگ‌آمیزی دستی',
     price: '۲۸۰,۰۰۰',
-    image: '/api/placeholder/300/400',
+    image: '/haftSin/photo_3_2025-09-06_08-47-07.jpg',
     size: 'قطر ۱۵ سانتی‌متر',
     material: 'سرامیک با لعاب',
     style: 'سنتی',
-    inStock: false
+    inStock: true
   },
   {
     id: 4,
-    title: 'سکه دان',
-    description: 'سکه دان با طراحی زیبا و کاربردی',
-    price: '۲۲۰,۰۰۰',
-    image: '/api/placeholder/300/400',
-    size: 'قطر ۱۲ سانتی‌متر',
-    material: 'سرامیک با لعاب',
-    style: 'سنتی',
-    inStock: true
-  },
-  {
-    id: 5,
     title: 'مجموعه کامل هفت سین',
     description: 'مجموعه کامل هفت سین شامل تمامی اجزای مورد نیاز',
     price: '۲,۵۰۰,۰۰۰',
-    image: '/api/placeholder/300/400',
+    image: '/haftSin/photo_6_2025-09-06_08-47-07.jpg',
     size: 'مجموعه کامل',
     material: 'سرامیک با لعاب',
     style: 'کلاسیک',
-    inStock: true
-  },
-  {
-    id: 6,
-    title: 'هفت سین مدرن',
-    description: 'هفت سین با طراحی مدرن و رنگ‌های شاد',
-    price: '۱,۸۰۰,۰۰۰',
-    image: '/api/placeholder/300/400',
-    size: '۴۵ × ۶۵ سانتی‌متر',
-    material: 'سرامیک با لعاب',
-    style: 'مدرن',
     inStock: true
   }
 ];
@@ -145,10 +124,13 @@ export default function HaftSinPage() {
             {products.map((product) => (
               <Card key={product.id} className="card-elegant hover:shadow-2xl transition-all duration-300 hover:scale-105 group">
                 <div className="relative overflow-hidden rounded-t-lg">
-                  <div className="aspect-[3/4] bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
-                    <div className="text-6xl text-primary/40 group-hover:text-primary/60 transition-colors">
-                      🌸
-                    </div>
+                  <div className="aspect-[3/4] relative">
+                    <Image
+                      src={product.image}
+                      alt={product.title}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-300"
+                    />
                   </div>
                   {!product.inStock && (
                     <div className="absolute top-4 right-4">

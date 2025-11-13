@@ -57,12 +57,24 @@ module.exports = {
         sm: 'calc(var(--radius) - 4px)',
       },
       fontFamily: {
-        sans: ['var(--font-sans)', 'Arial', 'Helvetica', 'sans-serif'],
-        mono: ['var(--font-mono)', 'monospace'],
+        sans: ['var(--font-vazirmatn)', 'Vazirmatn', 'Tahoma', 'Arial', 'sans-serif'],
+        mono: ['var(--font-vazirmatn)', 'monospace'],
+      },
+      fontSize: {
+        'xs': ['0.75rem', { lineHeight: '1.6' }],
+        'sm': ['0.875rem', { lineHeight: '1.7' }],
+        'base': ['1rem', { lineHeight: '1.8' }],
+        'lg': ['1.125rem', { lineHeight: '1.8' }],
+        'xl': ['1.25rem', { lineHeight: '1.7' }],
+        '2xl': ['1.5rem', { lineHeight: '1.6' }],
+        '3xl': ['1.875rem', { lineHeight: '1.5' }],
+        '4xl': ['2.25rem', { lineHeight: '1.4' }],
+        '5xl': ['3rem', { lineHeight: '1.3' }],
       },
     },
   },
   plugins: [],
 }
+
 
 

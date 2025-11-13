@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -6,61 +7,121 @@ import { Badge } from '@/components/ui/badge';
 const products = [
   {
     id: 1,
-    title: 'تابلو گل و مرغ',
-    description: 'تابلوی زیبای گل و مرغ با تکنیک آینانتیک و رنگ‌آمیزی دستی',
+    title: 'تابلو آینانتیک ۱',
+    description: 'تابلوی زیبا با تکنیک آینانتیک و رنگ‌آمیزی دستی',
     price: '۲,۵۰۰,۰۰۰',
-    image: '/api/placeholder/300/400',
+    image: '/tabloAine/photo_2025-09-06_08-47-36.jpg',
     size: '۵۰ × ۷۰ سانتی‌متر',
     material: 'چوب و رنگ طبیعی',
     inStock: true
   },
   {
     id: 2,
-    title: 'تابلو منظره کوهستان',
-    description: 'تابلوی منظره کوهستان با طراحی کلاسیک و رنگ‌های طبیعی',
+    title: 'تابلو آینانتیک ۲',
+    description: 'تابلوی زیبا با تکنیک آینانتیک و رنگ‌آمیزی دستی',
     price: '۳,۲۰۰,۰۰۰',
-    image: '/api/placeholder/300/400',
+    image: '/tabloAine/photo_2025-09-06_08-47-46.jpg',
     size: '۶۰ × ۸۰ سانتی‌متر',
     material: 'چوب و رنگ طبیعی',
     inStock: true
   },
   {
     id: 3,
-    title: 'تابلو انتزاعی طلایی',
-    description: 'تابلوی انتزاعی با رنگ‌های طلایی و طراحی مدرن',
+    title: 'تابلو آینانتیک ۳',
+    description: 'تابلوی زیبا با تکنیک آینانتیک و رنگ‌آمیزی دستی',
     price: '۱,۸۰۰,۰۰۰',
-    image: '/api/placeholder/300/400',
+    image: '/tabloAine/photo_2025-09-06_08-47-48.jpg',
     size: '۴۰ × ۶۰ سانتی‌متر',
-    material: 'چوب و رنگ طلایی',
-    inStock: false
+    material: 'چوب و رنگ طبیعی',
+    inStock: true
   },
   {
     id: 4,
-    title: 'تابلو گل رز',
-    description: 'تابلوی گل رز با جزئیات دقیق و رنگ‌آمیزی هنری',
+    title: 'تابلو آینانتیک ۴',
+    description: 'تابلوی زیبا با تکنیک آینانتیک و رنگ‌آمیزی دستی',
     price: '۲,۸۰۰,۰۰۰',
-    image: '/api/placeholder/300/400',
+    image: '/tabloAine/photo_2025-09-06_08-47-50.jpg',
     size: '۵۵ × ۷۵ سانتی‌متر',
     material: 'چوب و رنگ طبیعی',
     inStock: true
   },
   {
     id: 5,
-    title: 'تابلو پرنده‌های مهاجر',
-    description: 'تابلوی پرنده‌های مهاجر با طراحی پویا و رنگ‌های زنده',
+    title: 'تابلو آینانتیک ۵',
+    description: 'تابلوی زیبا با تکنیک آینانتیک و رنگ‌آمیزی دستی',
     price: '۳,۵۰۰,۰۰۰',
-    image: '/api/placeholder/300/400',
+    image: '/tabloAine/photo_2025-09-06_08-47-52.jpg',
     size: '۷۰ × ۹۰ سانتی‌متر',
     material: 'چوب و رنگ طبیعی',
     inStock: true
   },
   {
     id: 6,
-    title: 'تابلو درخت زندگی',
-    description: 'تابلوی درخت زندگی با نمادهای معنوی و رنگ‌های زمینی',
+    title: 'تابلو آینانتیک ۶',
+    description: 'تابلوی زیبا با تکنیک آینانتیک و رنگ‌آمیزی دستی',
     price: '۲,۲۰۰,۰۰۰',
-    image: '/api/placeholder/300/400',
+    image: '/tabloAine/photo_2025-09-06_08-47-54.jpg',
     size: '۴۵ × ۶۵ سانتی‌متر',
+    material: 'چوب و رنگ طبیعی',
+    inStock: true
+  },
+  {
+    id: 7,
+    title: 'تابلو آینانتیک ۷',
+    description: 'تابلوی زیبا با تکنیک آینانتیک و رنگ‌آمیزی دستی',
+    price: '۲,۶۰۰,۰۰۰',
+    image: '/tabloAine/photo_2025-09-06_08-48-30.jpg',
+    size: '۵۰ × ۷۰ سانتی‌متر',
+    material: 'چوب و رنگ طبیعی',
+    inStock: true
+  },
+  {
+    id: 8,
+    title: 'تابلو آینانتیک ۸',
+    description: 'تابلوی زیبا با تکنیک آینانتیک و رنگ‌آمیزی دستی',
+    price: '۳,۰۰۰,۰۰۰',
+    image: '/tabloAine/photo_2025-09-06_08-48-32.jpg',
+    size: '۶۰ × ۸۰ سانتی‌متر',
+    material: 'چوب و رنگ طبیعی',
+    inStock: true
+  },
+  {
+    id: 9,
+    title: 'تابلو آینانتیک ۹',
+    description: 'تابلوی زیبا با تکنیک آینانتیک و رنگ‌آمیزی دستی',
+    price: '۲,۴۰۰,۰۰۰',
+    image: '/tabloAine/photo_2025-09-06_08-48-34.jpg',
+    size: '۵۵ × ۷۵ سانتی‌متر',
+    material: 'چوب و رنگ طبیعی',
+    inStock: true
+  },
+  {
+    id: 10,
+    title: 'تابلو آینانتیک ۱۰',
+    description: 'تابلوی زیبا با تکنیک آینانتیک و رنگ‌آمیزی دستی',
+    price: '۳,۳۰۰,۰۰۰',
+    image: '/tabloAine/photo_2025-09-06_08-48-37.jpg',
+    size: '۶۵ × ۸۵ سانتی‌متر',
+    material: 'چوب و رنگ طبیعی',
+    inStock: true
+  },
+  {
+    id: 11,
+    title: 'تابلو آینانتیک ۱۱',
+    description: 'تابلوی زیبا با تکنیک آینانتیک و رنگ‌آمیزی دستی',
+    price: '۲,۹۰۰,۰۰۰',
+    image: '/tabloAine/photo_2025-09-06_08-48-39.jpg',
+    size: '۵۸ × ۷۸ سانتی‌متر',
+    material: 'چوب و رنگ طبیعی',
+    inStock: true
+  },
+  {
+    id: 12,
+    title: 'تابلو آینانتیک ۱۲',
+    description: 'تابلوی زیبا با تکنیک آینانتیک و رنگ‌آمیزی دستی',
+    price: '۳,۶۰۰,۰۰۰',
+    image: '/tabloAine/photo_2025-09-06_08-48-41.jpg',
+    size: '۷۵ × ۹۵ سانتی‌متر',
     material: 'چوب و رنگ طبیعی',
     inStock: true
   }

@@ -13,73 +13,22 @@ const DivarkobSardisPage = () => {
   const products = [
     {
       id: 1,
-      name: 'دیوارکوب کلاسیک طلایی',
+      name: 'دیوارکوب و سردیس',
       price: '۲,۵۰۰,۰۰۰',
-      originalPrice: '۳,۰۰۰,۰۰۰',
-      discount: '۱۷٪',
       rating: 4.8,
       reviews: 24,
       image: '/divarkobVaSardis/photo_2025-09-06_08-48-03.jpg',
-      description: 'دیوارکوب زیبا و کلاسیک با طراحی طلایی و جزئیات هنری',
-      features: ['جنس مرغوب', 'طراحی کلاسیک', 'رنگ طلایی', 'قابل شستشو'],
+      description: 'دیوارکوب و سردیس زیبا با طراحی منحصر به فرد و جزئیات هنری',
+      features: ['جنس مرغوب', 'طراحی منحصر به فرد', 'کیفیت بالا', 'نصب آسان'],
       inStock: true,
-      isNew: true,
-      isFavorite: false
-    },
-    {
-      id: 2,
-      name: 'سردیس مدرن نقره‌ای',
-      price: '۱,۸۰۰,۰۰۰',
-      originalPrice: '۲,۲۰۰,۰۰۰',
-      discount: '۱۸٪',
-      rating: 4.6,
-      reviews: 18,
-      image: '/divarkobVaSardis/photo_2025-09-06_08-48-03.jpg',
-      description: 'سردیس مدرن با طراحی نقره‌ای و خطوط هندسی زیبا',
-      features: ['طراحی مدرن', 'رنگ نقره‌ای', 'جنس مقاوم', 'نصب آسان'],
-      inStock: true,
-      isNew: false,
-      isFavorite: true
-    },
-    {
-      id: 3,
-      name: 'دیوارکوب سنتی برنزی',
-      price: '۳,۲۰۰,۰۰۰',
-      originalPrice: '۳,۸۰۰,۰۰۰',
-      discount: '۱۶٪',
-      rating: 4.9,
-      reviews: 31,
-      image: '/divarkobVaSardis/photo_2025-09-06_08-48-03.jpg',
-      description: 'دیوارکوب سنتی با الهام از هنر ایرانی و رنگ برنزی',
-      features: ['طراحی سنتی', 'رنگ برنزی', 'هنر ایرانی', 'کیفیت بالا'],
-      inStock: true,
-      isNew: false,
-      isFavorite: false
-    },
-    {
-      id: 4,
-      name: 'سردیس مینیمال سفید',
-      price: '۱,۴۰۰,۰۰۰',
-      originalPrice: '۱,۷۰۰,۰۰۰',
-      discount: '۱۸٪',
-      rating: 4.7,
-      reviews: 22,
-      image: '/divarkobVaSardis/photo_2025-09-06_08-48-03.jpg',
-      description: 'سردیس مینیمال با طراحی ساده و رنگ سفید براق',
-      features: ['طراحی مینیمال', 'رنگ سفید', 'سادگی', 'قیمت مناسب'],
-      inStock: false,
       isNew: true,
       isFavorite: false
     }
   ];
 
   const categories = [
-    { name: 'همه محصولات', count: 12, active: true },
-    { name: 'دیوارکوب', count: 7, active: false },
-    { name: 'سردیس', count: 5, active: false },
-    { name: 'کلاسیک', count: 4, active: false },
-    { name: 'مدرن', count: 6, active: false },
-    { name: 'سنتی', count: 2, active: false }
+    { name: 'همه محصولات', count: 1, active: true },
+    { name: 'دیوارکوب و سردیس', count: 1, active: false }
   ];
 
   const features = [
