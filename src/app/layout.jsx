@@ -34,7 +34,7 @@ export default function RootLayout({ children }) {
         <ClientComponents />
         <Header />
         {/* Hero Image */}
-        <section id="banner-section" className="relative w-full m-0 p-0 -mt-[100px] sm:-mt-20">
+        <section id="banner-section" className="relative w-full m-0 p-0 mt-5 md:-mt-20">
           <div
             id="banner-image"
             className="relative w-full h-auto md:h-[800px] m-0 p-0"

@@ -97,7 +97,7 @@ export default function Home() {
       <div className="relative z-10">
 
       {/* About Section */}
-      <section className="m-0 mt-[50px] p-0 bg-secondary/30">
+      <section className="m-0 mt-5 md:mt-[50px] p-0 bg-secondary/30">
         <div className="container mx-auto px-4 m-0">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 golden-text">
