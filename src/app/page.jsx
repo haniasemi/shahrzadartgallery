@@ -5,7 +5,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Palette, Award, Gift } from 'lucide-react';
+import { Palette, Award, Gift, Star, TrendingUp, Users, Package, Calendar, Quote } from 'lucide-react';
+import TestimonialCard from '@/components/TestimonialCard';
+import { getAllBlogPosts } from '@/lib/blogData';
+import CountUp from '@/components/CountUp';
+import BounceIn from '@/components/BounceIn';
 
 export default function Home() {
   const categories = [
@@ -105,10 +109,10 @@ export default function Home() {
             </h2>
             <div className="backdrop-blur-2xl bg-white/40 rounded-lg p-6 md:p-8 max-w-3xl mx-auto border border-white/40 shadow-lg">
               <p className="text-lg text-foreground leading-relaxed">
-                با بیش از یک دهه تجربه در زمینه تولید و عرضه محصولات هنری و دکوری، 
-                گالری هنری شهرزاد آماده ارائه بهترین خدمات و محصولات با کیفیت به شما عزیزان است.
-                هر یک از آثار ما با دقت و ظرافت خاصی طراحی و ساخته می‌شوند و منحصر به فرد هستند، 
-                به گونه‌ای که هر محصول بیانگر هنر و خلاقیت منحصر به فرد ماست.
+                خوش اومدین به دنیای هنر و زیبایی! 🎨 با بیش از ده سال تجربه در ساخت آثار هنری و دکوری، 
+                ما توی گالری هنری شهرزاد منتظرتونیم تا بهترین محصولات رو براتون بسازیم.
+                هر کدوم از آثارمون با عشق و دقت ساخته میشن و واقعاً منحصر به فردن! 
+                به این معنی که اگه یکی از دوستاتون هم بخواد مثل همین رو داشته باشه، باید دوباره به ما سفارش بده 😄
               </p>
             </div>
           </div>
@@ -120,7 +124,8 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold mb-3 text-foreground">هنر دست‌ساز</h3>
               <p className="text-muted-foreground">
-                تمامی محصولات ما با دست و با دقت و ظرافت خاصی ساخته می‌شوند
+                همه چیز با دست ساخته میشه! یعنی ماشین نیست که بخواد اشتباه کنه 😊
+                هر محصول مثل بچه‌مون میمونه که با عشق و دقت پرورشش میدیم
               </p>
             </div>
             
@@ -130,7 +135,8 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold mb-3 text-foreground">کیفیت بالا</h3>
               <p className="text-muted-foreground">
-                استفاده از بهترین مواد اولیه و تکنیک‌های پیشرفته در تولید
+                مواد اولیه رو از بهترین‌ها انتخاب می‌کنیم (نه اون چیزای بی‌کیفیت که زود خراب میشن! 😅)
+                و با تکنیک‌های پیشرفته کار می‌کنیم تا محصولی که تحویلتون میدیم واقعاً عالی باشه
               </p>
             </div>
             
@@ -140,8 +146,66 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold mb-3 text-foreground">سفارش اختصاصی</h3>
               <p className="text-muted-foreground">
-                امکان سفارش محصولات اختصاصی مطابق با سلیقه و نیاز شما
+                می‌خوای یه چیز کاملاً مخصوص خودت داشته باشی؟ خب بریم جلو! 🎯
+                هرچی دلت بخواد رو می‌سازیم، فقط بگو چی می‌خوای و بقیش با ما!
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Statistics Section */}
+      <section className="py-20 bg-gradient-to-b from-secondary/50 to-background">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 golden-text">
+              آمار و دستاوردها
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              چند تا عدد و رقم که نشون میده چقدر خوب کار کردیم! 📊
+              (واقعاً خودمونم تعجب کردیم که این همه مشتری راضی داریم 😄)
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+            <div className="text-center backdrop-blur-2xl bg-white/40 p-6 rounded-lg border border-white/40 shadow-lg">
+              <div className="w-16 h-16 golden-gradient rounded-full flex items-center justify-center mx-auto mb-4">
+                <Users className="w-8 h-8 text-foreground stroke-[1.5]" />
+              </div>
+              <div className="text-3xl md:text-4xl font-bold mb-2 golden-text">
+                <CountUp end={500} suffix="+" duration={2000} />
+              </div>
+              <p className="text-sm md:text-base text-muted-foreground">مشتری راضی</p>
+            </div>
+            
+            <div className="text-center backdrop-blur-2xl bg-white/40 p-6 rounded-lg border border-white/40 shadow-lg">
+              <div className="w-16 h-16 golden-gradient rounded-full flex items-center justify-center mx-auto mb-4">
+                <Package className="w-8 h-8 text-foreground stroke-[1.5]" />
+              </div>
+              <div className="text-3xl md:text-4xl font-bold mb-2 golden-text">
+                <CountUp end={1000} suffix="+" duration={2500} />
+              </div>
+              <p className="text-sm md:text-base text-muted-foreground">محصول تولیدی</p>
+            </div>
+            
+            <div className="text-center backdrop-blur-2xl bg-white/40 p-6 rounded-lg border border-white/40 shadow-lg">
+              <div className="w-16 h-16 golden-gradient rounded-full flex items-center justify-center mx-auto mb-4">
+                <Calendar className="w-8 h-8 text-foreground stroke-[1.5]" />
+              </div>
+              <div className="text-3xl md:text-4xl font-bold mb-2 golden-text">
+                <CountUp end={15} suffix="+" duration={1800} />
+              </div>
+              <p className="text-sm md:text-base text-muted-foreground">سال تجربه</p>
+            </div>
+            
+            <div className="text-center backdrop-blur-2xl bg-white/40 p-6 rounded-lg border border-white/40 shadow-lg">
+              <div className="w-16 h-16 golden-gradient rounded-full flex items-center justify-center mx-auto mb-4">
+                <Star className="w-8 h-8 text-foreground stroke-[1.5]" />
+              </div>
+              <div className="text-3xl md:text-4xl font-bold mb-2 golden-text">
+                <CountUp end={4.9} suffix="" duration={2000} decimals={1} />
+              </div>
+              <p className="text-sm md:text-base text-muted-foreground">امتیاز رضایت</p>
             </div>
           </div>
         </div>
@@ -155,7 +219,8 @@ export default function Home() {
               دسته‌بندی محصولات
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              مجموعه‌ای متنوع از محصولات هنری و دکوری برای هر سلیقه و نیاز
+              اینا همون محصولاتین که خیلیا عاشقشون شدن! 🎨
+              هر سلیقه‌ای که داشته باشی، حتماً یه چیزی اینجا پیدا می‌کنی که دوسش داشته باشی!
             </p>
           </div>
           
@@ -236,14 +301,214 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Featured Products Section */}
+      <section className="py-20 bg-gradient-to-b from-background to-secondary/30">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <TrendingUp className="w-6 h-6 text-primary" />
+              <h2 className="text-3xl md:text-4xl font-bold golden-text">
+                محصولات پرفروش
+              </h2>
+            </div>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              اینا همون محصولاتی هستن که همه عاشقشون شدن! ❤️
+              (خیلیا میگن نکنین بفروشینشون چون دیگه نمونده برا ما! 😂)
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                title: 'تابلو آینانتیک کلاسیک',
+                category: 'آینانتیک',
+                image: '/tabloAine/photo_2025-09-06_08-47-36.jpg',
+                href: '/ainantik/tablo',
+                direction: 'up'
+              },
+              {
+                title: 'گلدان سرامیکی مدرن',
+                category: 'دکوری',
+                image: '/goldan/photo_2025-09-06_08-48-14.jpg',
+                href: '/dekori/goldan',
+                direction: 'down'
+              },
+              {
+                title: 'مجموعه هفت سین',
+                category: 'ظروف سرامیکی',
+                image: '/haftSin/photo_1_2025-09-06_08-47-07.jpg',
+                href: '/zoroof-seramiki/haft-sin',
+                direction: 'up'
+              },
+              {
+                title: 'شمع ارگانیک دست‌ساز',
+                category: 'شمع ارگانیک',
+                image: '/shamDastSaz/1.jpg',
+                href: '/sham-organic/dast-saz',
+                direction: 'down'
+              }
+            ].map((product, index) => (
+              <BounceIn key={index} delay={index * 150} direction={product.direction}>
+                <Card className="card-elegant group cursor-pointer overflow-hidden p-0">
+                <CardContent className="p-0">
+                  <Link href={product.href} className="block">
+                    <div className="aspect-square relative overflow-hidden">
+                      <Image
+                        src={product.image}
+                        alt={product.title}
+                        fill
+                        className="object-cover group-hover:scale-110 transition-transform duration-500"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      />
+                      <div className="absolute top-2 left-2">
+                        <span className="bg-primary/90 text-primary-foreground text-xs px-2 py-1 rounded">
+                          {product.category}
+                        </span>
+                      </div>
+                    </div>
+                  </Link>
+                  <div className="p-4">
+                    <h3 className="text-lg font-semibold mb-2 group-hover:text-primary transition-colors">
+                      <Link href={product.href}>{product.title}</Link>
+                    </h3>
+                    <div className="flex items-center gap-1 mb-3">
+                      {[1, 2, 3, 4, 5].map((star) => (
+                        <Star key={star} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                      ))}
+                      <span className="text-xs text-muted-foreground mr-2">(۴.۸)</span>
+                    </div>
+                    <Button variant="outline" size="sm" className="w-full">
+                      <Link href={product.href}>مشاهده جزئیات</Link>
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+              </BounceIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-20 bg-secondary/30">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <Quote className="w-6 h-6 text-primary" />
+              <h2 className="text-3xl md:text-4xl font-bold golden-text">
+                نظرات مشتریان
+              </h2>
+            </div>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              اینا نظرات واقعی مشتریهامونن! نه اون چیزای ساختگی که توی بعضی سایت‌ها میبینی 😄
+              وقتی میبینیم چقدر خوشحالن، دل ما هم روشن میشه!
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {[
+              {
+                name: 'فاطمه رضایی',
+                location: 'تهران',
+                text: 'کیفیت محصولات شهرزاد واقعاً فوق‌العاده است. تابلو آینانتیکی که سفارش دادم از هر نظر بی‌نظیر بود. حتماً دوباره سفارش می‌دهم.'
+              },
+              {
+                name: 'علی محمدی',
+                location: 'اصفهان',
+                text: 'شمع‌های ارگانیک این گالری رایحه‌های خیلی طبیعی و دلنشینی دارن. کیفیت ساخت هم عالی بود. به همه پیشنهاد می‌کنم.'
+              },
+              {
+                name: 'سارا احمدی',
+                location: 'شیراز',
+                text: 'مجموعه هفت سینی که از این گالری خریدم برای عید نوروز واقعاً زیبا و با کیفیت بود. خانواده همه تعریف کردن. ممنون از زحماتتون.'
+              },
+              {
+                name: 'محمد کریمی',
+                location: 'مشهد',
+                text: 'سفارش اختصاصی که دادم دقیقاً مطابق سلیقه و خواسته‌هام بود. تیم پشتیبانی هم خیلی خوب و پاسخگو بودن. حتماً ادامه همکاری خواهم داشت.'
+              },
+              {
+                name: 'مریم حسینی',
+                location: 'تبریز',
+                text: 'ظروف سرامیکی این گالری کیفیت خیلی بالایی دارن. طراحی‌ها هم منحصر به فرد و زیبا هستن. برای دکوراسیون خانه عالیه.'
+              },
+              {
+                name: 'حسین علیزاده',
+                location: 'رشت',
+                text: 'آثار دکوری شهرزاد رو دوست دارم. هر بار که می‌خرم کیفیت و زیبایی محصولات بیشتر از قبل منو شگفت‌زده می‌کنه. واقعاً هنرمندانه ساخته شدن.'
+              }
+            ].map((testimonial, index) => (
+              <TestimonialCard key={index} testimonial={testimonial} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Latest Blog Posts Section */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 golden-text">
+              آخرین مقالات و اخبار
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              یه سری مطلب جالب که نوشتیم تا بیشتر از هنرهای دستی بفهمین! 📚
+              (واقعاً مفیدن، بخونین پشیمون نمیشین 😊)
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-12">
+            {getAllBlogPosts().slice(0, 3).map((post, index) => (
+              <Card key={post.slug || index} className="card-elegant group cursor-pointer overflow-hidden">
+                <CardContent className="p-0">
+                  <Link href={`/blog/${post.slug}`}>
+                    <div className="aspect-video bg-gradient-to-br from-secondary to-primary/20 flex items-center justify-center relative overflow-hidden">
+                      <span className="text-6xl opacity-50">📰</span>
+                      <div className="absolute top-2 left-2">
+                        <span className="bg-primary/90 text-primary-foreground text-xs px-2 py-1 rounded">
+                          {post.category}
+                        </span>
+                      </div>
+                    </div>
+                  </Link>
+                  <div className="p-6">
+                    <div className="flex items-center gap-2 mb-3 text-xs text-muted-foreground">
+                      <span>{post.date}</span>
+                      <span>•</span>
+                      <span>{post.readTime}</span>
+                    </div>
+                    <h3 className="text-lg font-semibold mb-3 group-hover:text-primary transition-colors line-clamp-2">
+                      <Link href={`/blog/${post.slug}`}>{post.title}</Link>
+                    </h3>
+                    <p className="text-muted-foreground text-sm mb-4 line-clamp-3">
+                      {post.excerpt}
+                    </p>
+                    <Button variant="outline" size="sm">
+                      <Link href={`/blog/${post.slug}`}>ادامه مطلب</Link>
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+          
+          <div className="text-center">
+            <Button size="lg" variant="outline" className="px-8">
+              <Link href="/blog">مشاهده همه مقالات</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-20 golden-gradient">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-black">
-            آماده سفارش محصول اختصاصی خود هستید؟
+            آماده‌اید یه چیز خفن براتون بسازیم؟ 🚀
           </h2>
           <p className="text-lg text-black/80 mb-8 max-w-2xl mx-auto">
-            با تیم متخصص ما تماس بگیرید و محصول منحصر به فرد خود را سفارش دهید
+            دیگه نیازی نیست دنبال چیزی که می‌خوای بگردی! بگو چی می‌خوای، ما برات می‌سازیمش
+            (تیممون خیلی زرنگن، نگران نباش! 😎)
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="bg-black text-white hover:bg-black/80 text-lg px-8 py-3">

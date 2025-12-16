@@ -172,13 +172,17 @@ export default function TabloPage() {
             {products.map((product) => (
               <Card key={product.id} className="card-elegant hover:shadow-2xl transition-all duration-300 hover:scale-105 group">
                 <div className="relative overflow-hidden rounded-t-lg">
-                  <div className="aspect-[3/4] bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
-                    <div className="text-6xl text-primary/40 group-hover:text-primary/60 transition-colors">
-                      🖼️
-                    </div>
+                  <div className="aspect-[3/4] relative bg-gradient-to-br from-primary/20 to-secondary/20">
+                    <Image
+                      src={product.image}
+                      alt={product.title}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
                   </div>
                   {!product.inStock && (
-                    <div className="absolute top-4 right-4">
+                    <div className="absolute top-4 right-4 z-10">
                       <Badge variant="destructive">ناموجود</Badge>
                     </div>
                   )}

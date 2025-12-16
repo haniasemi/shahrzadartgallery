@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ClientComponents from "@/components/ClientComponents";
 import Image from "next/image";
+import AdminEditToolbar from "@/components/AdminEditToolbar";
 
 const vazirmatn = Vazirmatn({
   variable: "--font-vazirmatn",
@@ -65,6 +66,7 @@ export default function RootLayout({ children }) {
       >
         <ClientComponents />
         <Header />
+        <AdminEditToolbar />
         {/* Hero Image */}
         <section id="banner-section" className="relative w-full m-0 p-0 mt-5 md:-mt-20">
           <div
