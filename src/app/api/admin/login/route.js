@@ -79,14 +79,24 @@ export async function POST(request) {
     return response;
   } catch (error) {
     console.error('Login error:', error);
+    console.error('Error stack:', error.stack);
     
-    // More detailed error message in development
-    const errorMessage = process.env.NODE_ENV === 'development' 
-      ? error.message 
-      : 'خطا در ورود به سیستم';
+    // More detailed error message
+    let errorMessage = 'خطا در ورود به سیستم';
+    
+    if (error.message?.includes('MongoDB') || error.message?.includes('connection')) {
+      errorMessage = 'خطا در اتصال به دیتابیس. لطفاً دوباره تلاش کنید.';
+    } else if (error.message?.includes('JWT') || error.message?.includes('secret')) {
+      errorMessage = 'خطا در تنظیمات امنیتی. لطفاً با پشتیبانی تماس بگیرید.';
+    } else if (process.env.NODE_ENV === 'development') {
+      errorMessage = `خطا: ${error.message}`;
+    }
     
     return NextResponse.json(
-      { error: errorMessage },
+      { 
+        error: errorMessage,
+        details: process.env.NODE_ENV === 'development' ? error.message : undefined
+      },
       { status: 500 }
     );
   }

@@ -37,7 +37,11 @@ export default function AdminLoginPage() {
         router.push('/admin/dashboard');
         router.refresh(); // Refresh to update auth state
       } else {
-        setError(data.error || 'خطا در ورود به سیستم');
+        // Show detailed error
+        const errorMsg = data.error || 'خطا در ورود به سیستم';
+        const details = data.details ? `\nجزئیات: ${data.details}` : '';
+        setError(errorMsg + details);
+        console.error('Login failed:', data);
       }
     } catch (error) {
       console.error('Login error:', error);
