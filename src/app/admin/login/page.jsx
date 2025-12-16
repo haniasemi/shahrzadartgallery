@@ -25,18 +25,23 @@ export default function AdminLoginPage() {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(formData),
+        credentials: 'include' // Important for cookies
       });
 
       const data = await response.json();
 
       if (data.success) {
+        // Wait a bit for cookie to be set
+        await new Promise(resolve => setTimeout(resolve, 100));
         router.push('/admin/dashboard');
+        router.refresh(); // Refresh to update auth state
       } else {
         setError(data.error || 'خطا در ورود به سیستم');
       }
     } catch (error) {
-      setError('خطا در ارتباط با سرور');
+      console.error('Login error:', error);
+      setError('خطا در ارتباط با سرور. لطفاً دوباره تلاش کنید.');
     } finally {
       setLoading(false);
     }
