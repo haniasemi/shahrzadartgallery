@@ -11,6 +11,8 @@ import { getAllBlogPosts } from '@/lib/blogData';
 import CountUp from '@/components/CountUp';
 import BounceIn from '@/components/BounceIn';
 import HeroBanner from '@/components/HeroBanner';
+import AdminEditButtons from '@/components/AdminEditButtons';
+import { useRouter } from 'next/navigation';
 
 const defaultSettings = {
   aboutTitle: 'درباره گالری هنری شهرزاد',
@@ -37,6 +39,7 @@ const defaultSettings = {
 };
 
 export default function Home() {
+  const router = useRouter();
   const [settings, setSettings] = useState(defaultSettings);
 
   const categories = [
@@ -144,7 +147,15 @@ export default function Home() {
       <HeroBanner />
 
       {/* About Section */}
-      <section className="m-0 mt-5 md:mt-[50px] p-0 bg-secondary/30">
+      <section id="about-section" className="m-0 mt-5 md:mt-[50px] p-0 bg-secondary/30 relative">
+        <div className="absolute top-4 left-4 z-10">
+          <AdminEditButtons
+            sectionId="about"
+            sectionType="homepage"
+            onEdit={() => router.push('/admin/settings')}
+            onDelete={() => {}}
+          />
+        </div>
         <div className="container mx-auto px-4 m-0">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 golden-text">
@@ -202,7 +213,15 @@ export default function Home() {
       </section>
 
       {/* Statistics Section */}
-      <section className="py-20 bg-gradient-to-b from-secondary/50 to-background">
+      <section id="statistics-section" className="py-20 bg-gradient-to-b from-secondary/50 to-background relative">
+        <div className="absolute top-4 left-4 z-10">
+          <AdminEditButtons
+            sectionId="statistics"
+            sectionType="homepage"
+            onEdit={() => router.push('/admin/settings')}
+            onDelete={() => {}}
+          />
+        </div>
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 golden-text">

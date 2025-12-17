@@ -145,16 +145,24 @@ export default function HeroBanner() {
           </div>
         )}
 
-        {banner && (
-          <div className="absolute top-4 right-4 z-10">
+        {/* Admin Edit Buttons - Show even if no banner */}
+        <div className="absolute top-4 right-4 z-[100]">
+          {banner ? (
             <AdminEditButtons
               sectionId={banner._id}
               sectionType="banner"
               onEdit={handleEdit}
               onDelete={handleDelete}
             />
-          </div>
-        )}
+          ) : (
+            <AdminEditButtons
+              sectionId="new"
+              sectionType="banner"
+              onEdit={() => router.push('/admin/banners/new')}
+              onDelete={() => {}}
+            />
+          )}
+        </div>
       </div>
     </section>
   );
