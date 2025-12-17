@@ -61,21 +61,21 @@ export default function HeroBanner() {
           priority
         />
 
-        {banner?.showContent !== false && (
+        {hasBanners && banner?.showContent !== false && (
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent flex items-end md:items-center">
             <div className="container mx-auto px-4 pb-10 md:pb-0">
               <div className="max-w-xl md:max-w-2xl space-y-4 md:space-y-6">
-                {banner.title && (
+                {banner?.title && (
                   <h1 className="text-3xl md:text-5xl font-bold text-white drop-shadow-lg">
                     {banner.title}
                   </h1>
                 )}
-                {banner.subtitle && (
+                {banner?.subtitle && (
                   <p className="text-sm md:text-lg text-white/90 leading-relaxed drop-shadow">
                     {banner.subtitle}
                   </p>
                 )}
-                {(banner.cta && banner.ctaLink) && (
+                {(banner?.cta && banner?.ctaLink) && (
                   <Button
                     asChild
                     size="lg"
