@@ -4,7 +4,6 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ClientComponents from "@/components/ClientComponents";
 import Image from "next/image";
-import AdminEditToolbar from "@/components/AdminEditToolbar";
 
 const vazirmatn = Vazirmatn({
   variable: "--font-vazirmatn",
@@ -66,7 +65,6 @@ export default function RootLayout({ children }) {
       >
         <ClientComponents />
         <Header />
-        <AdminEditToolbar />
         <main className="min-h-screen m-0 p-0">
           {children}
         </main>

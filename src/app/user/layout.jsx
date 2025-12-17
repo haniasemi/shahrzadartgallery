@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { LogOut } from 'lucide-react';
 
-export default function AdminLayout({ children }) {
+export default function UserLayout({ children }) {
   const router = useRouter();
   const pathname = usePathname();
   const [authUser, setAuthUser] = useState(null);
@@ -18,7 +18,7 @@ export default function AdminLayout({ children }) {
         const res = await fetch('/api/auth/verify', { credentials: 'include' });
         const data = await res.json();
         
-        if (!data.valid || data.user?.role !== 'admin') {
+        if (!data.valid) {
           router.push('/login');
           return;
         }
@@ -52,11 +52,9 @@ export default function AdminLayout({ children }) {
   }
 
   const menuItems = [
-    { label: 'داشبورد', href: '/admin/dashboard' },
-    { label: 'محصولات', href: '/admin/products' },
-    { label: 'مشتریان', href: '/admin/customers' },
-    { label: 'پیام‌ها', href: '/admin/messages' },
-    { label: 'تنظیمات', href: '/admin/settings' }
+    { label: 'داشبورد', href: '/user/dashboard' },
+    { label: 'محصولات', href: '/user/products' },
+    { label: 'پیام‌ها', href: '/user/messages' }
   ];
 
   return (
@@ -65,7 +63,7 @@ export default function AdminLayout({ children }) {
       <div className="bg-card border-b border-border sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <h2 className="text-xl font-bold golden-text">پنل مدیریت</h2>
+            <h2 className="text-xl font-bold golden-text">پنل کاربری</h2>
             <div className="flex items-center gap-4">
               <span className="text-sm text-muted-foreground">خوش آمدید {authUser?.username}</span>
               <Button variant="outline" size="sm" onClick={handleLogout}>
@@ -103,3 +101,4 @@ export default function AdminLayout({ children }) {
     </div>
   );
 }
+

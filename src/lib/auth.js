@@ -20,7 +20,7 @@ export function getTokenFromRequest(request) {
     return acc;
   }, {});
 
-  return cookies.adminToken || null;
+  return cookies.authToken || cookies.adminToken || null; // Support both for backward compatibility
 }
 
 export async function verifyAdmin(request) {
@@ -34,7 +34,26 @@ export async function verifyAdmin(request) {
     return { valid: false, admin: null };
   }
 
-  return { valid: true, admin: decoded };
+  // Check if it's admin
+  if (decoded.role === 'admin' || decoded.type === 'admin') {
+    return { valid: true, admin: decoded };
+  }
+
+  return { valid: false, admin: null };
+}
+
+export async function verifyUser(request) {
+  const token = getTokenFromRequest(request);
+  if (!token) {
+    return { valid: false, user: null };
+  }
+
+  const decoded = verifyToken(token);
+  if (!decoded) {
+    return { valid: false, user: null };
+  }
+
+  return { valid: true, user: decoded };
 }
 
 

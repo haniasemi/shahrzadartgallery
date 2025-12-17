@@ -13,6 +13,23 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [openSubmenu, setOpenSubmenu] = useState(null);
   const [openDesktopSubmenu, setOpenDesktopSubmenu] = useState(null);
+  const [authUser, setAuthUser] = useState(null);
+
+  // Check authentication status
+  useEffect(() => {
+    const checkAuth = async () => {
+      try {
+        const res = await fetch('/api/auth/verify', { credentials: 'include' });
+        const data = await res.json();
+        if (data.valid && data.user) {
+          setAuthUser(data.user);
+        }
+      } catch (error) {
+        console.error('Auth check error:', error);
+      }
+    };
+    checkAuth();
+  }, []);
 
   // بستن dropdown با کلیک خارج از آن
   useEffect(() => {
@@ -30,6 +47,16 @@ const Header = () => {
       document.removeEventListener('click', handleClickOutside);
     };
   }, [openDesktopSubmenu]);
+
+  const handleLogout = async () => {
+    try {
+      await fetch('/api/auth/logout', { method: 'POST', credentials: 'include' });
+      setAuthUser(null);
+      window.location.href = '/';
+    } catch (error) {
+      console.error('Logout error:', error);
+    }
+  };
 
   const menuItems = [
     { name: 'خانه', href: '/', icon: '/icons/19033484.png' },
@@ -137,11 +164,23 @@ const Header = () => {
                 <span className="hidden sm:block text-sm font-medium">تماس</span>
               </a>
             </Tooltip>
-            {/* ورود/ثبت نام */}
-            <Link href="/login" className="flex items-center space-x-2 space-x-reverse text-foreground hover:text-primary transition-colors duration-200">
-              <User className="h-5 w-5 scale-x-[-1]" />
-              <span className="hidden sm:block text-sm font-medium">ورود/ثبت نام</span>
-            </Link>
+            {/* ورود/ثبت نام یا پنل مدیریت */}
+            {authUser?.role === 'admin' ? (
+              <Link href="/admin/dashboard" className="flex items-center space-x-2 space-x-reverse text-foreground hover:text-primary transition-colors duration-200">
+                <User className="h-5 w-5 scale-x-[-1]" />
+                <span className="hidden sm:block text-sm font-medium">پنل مدیریت</span>
+              </Link>
+            ) : authUser ? (
+              <Link href="/user/dashboard" className="flex items-center space-x-2 space-x-reverse text-foreground hover:text-primary transition-colors duration-200">
+                <User className="h-5 w-5 scale-x-[-1]" />
+                <span className="hidden sm:block text-sm font-medium">{authUser.username}</span>
+              </Link>
+            ) : (
+              <Link href="/login" className="flex items-center space-x-2 space-x-reverse text-foreground hover:text-primary transition-colors duration-200">
+                <User className="h-5 w-5 scale-x-[-1]" />
+                <span className="hidden sm:block text-sm font-medium">ورود/ثبت نام</span>
+              </Link>
+            )}
             {/* سبد خرید */}
             <Link href="/cart" className="flex items-center space-x-2 space-x-reverse text-foreground hover:text-primary transition-colors duration-200">
               <ShoppingCart className="h-5 w-5 scale-x-[-1]" />
@@ -187,10 +226,22 @@ const Header = () => {
                     >
                       <Phone className="h-5 w-5" />
                     </a>
-                    <Link href="/login" className="flex items-center space-x-2 space-x-reverse text-foreground hover:text-primary transition-colors duration-200">
-                      <User className="h-5 w-5" />
-                      <span className="text-sm font-medium">ورود/ثبت نام</span>
-                    </Link>
+                    {authUser?.role === 'admin' ? (
+                      <Link href="/admin/dashboard" className="flex items-center space-x-2 space-x-reverse text-foreground hover:text-primary transition-colors duration-200">
+                        <User className="h-5 w-5" />
+                        <span className="text-sm font-medium">پنل مدیریت</span>
+                      </Link>
+                    ) : authUser ? (
+                      <Link href="/user/dashboard" className="flex items-center space-x-2 space-x-reverse text-foreground hover:text-primary transition-colors duration-200">
+                        <User className="h-5 w-5" />
+                        <span className="text-sm font-medium">{authUser.username}</span>
+                      </Link>
+                    ) : (
+                      <Link href="/login" className="flex items-center space-x-2 space-x-reverse text-foreground hover:text-primary transition-colors duration-200">
+                        <User className="h-5 w-5" />
+                        <span className="text-sm font-medium">ورود/ثبت نام</span>
+                      </Link>
+                    )}
                     <Link href="/cart" className="flex items-center space-x-2 space-x-reverse text-foreground hover:text-primary transition-colors duration-200">
                       <ShoppingCart className="h-5 w-5" />
                       <span className="text-sm font-medium">سبد خرید</span>

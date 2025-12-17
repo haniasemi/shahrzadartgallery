@@ -9,12 +9,28 @@ export async function GET(request) {
     const { searchParams } = new URL(request.url);
     const category = searchParams.get('category');
     const subCategory = searchParams.get('subCategory');
+    const limit = parseInt(searchParams.get('limit')) || 0;
+    const sort = searchParams.get('sort') || 'newest';
 
     let query = {};
     if (category) query.category = category;
     if (subCategory) query.subCategory = subCategory;
 
-    const products = await Product.find(query).sort({ createdAt: -1 });
+    let sortOption = { createdAt: -1 };
+    if (sort === 'newest') {
+      sortOption = { createdAt: -1 };
+    } else if (sort === 'oldest') {
+      sortOption = { createdAt: 1 };
+    } else if (sort === 'views') {
+      sortOption = { views: -1 };
+    }
+
+    let productsQuery = Product.find(query).sort(sortOption);
+    if (limit > 0) {
+      productsQuery = productsQuery.limit(limit);
+    }
+    
+    const products = await productsQuery;
     return NextResponse.json({ success: true, products });
   } catch (error) {
     console.error('Get products error:', error);

@@ -3,9 +3,12 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
+import AdminEditButtons from '@/components/AdminEditButtons';
 
 export default function HeroBanner() {
+  const router = useRouter();
   const [banners, setBanners] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -44,6 +47,42 @@ export default function HeroBanner() {
   const hasBanners = banners.length > 0;
   const banner = hasBanners ? banners[currentIndex] : null;
   const imageSrc = banner?.image || '/photo_2025-09-06_06-37-29.jpg';
+
+  const handleEdit = (bannerId) => {
+    router.push(`/admin/banners/${bannerId}`);
+  };
+
+  const handleDelete = async (bannerId) => {
+    if (!confirm('آیا مطمئن هستید که می‌خواهید این بنر را حذف کنید؟')) {
+      return;
+    }
+
+    try {
+      const res = await fetch(`/api/banners/${bannerId}`, {
+        method: 'DELETE',
+        credentials: 'include'
+      });
+      const data = await res.json();
+      
+      if (data.success) {
+        // Reload banners
+        const res2 = await fetch('/api/banners', { cache: 'no-store' });
+        const data2 = await res2.json();
+        if (data2?.success && Array.isArray(data2.banners)) {
+          setBanners(data2.banners);
+          if (currentIndex >= data2.banners.length) {
+            setCurrentIndex(0);
+          }
+        }
+        router.refresh();
+      } else {
+        alert('خطا در حذف بنر: ' + (data.error || 'خطای ناشناخته'));
+      }
+    } catch (error) {
+      console.error('Delete banner error:', error);
+      alert('خطا در حذف بنر');
+    }
+  };
 
   return (
     <section id="banner-section" className="relative w-full m-0 p-0 mt-5 md:-mt-20">
@@ -103,6 +142,17 @@ export default function HeroBanner() {
                 aria-label={`بنر ${i + 1}`}
               />
             ))}
+          </div>
+        )}
+
+        {banner && (
+          <div className="absolute top-4 right-4 z-10">
+            <AdminEditButtons
+              sectionId={banner._id}
+              sectionType="banner"
+              onEdit={handleEdit}
+              onDelete={handleDelete}
+            />
           </div>
         )}
       </div>
