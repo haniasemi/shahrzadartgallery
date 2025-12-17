@@ -10,8 +10,11 @@ import TestimonialCard from '@/components/TestimonialCard';
 import { getAllBlogPosts } from '@/lib/blogData';
 import CountUp from '@/components/CountUp';
 import BounceIn from '@/components/BounceIn';
+import HeroBanner from '@/components/HeroBanner';
 
 export default function Home() {
+  const [settings, setSettings] = useState(null);
+
   const categories = [
     {
       title: 'آینانتیک',
@@ -91,6 +94,21 @@ export default function Home() {
       }
     });
 
+    // Load homepage settings from API
+    const loadSettings = async () => {
+      try {
+        const res = await fetch('/api/homepage', { cache: 'no-store' });
+        const data = await res.json();
+        if (data?.success && data.settings) {
+          setSettings(data.settings);
+        }
+      } catch (error) {
+        console.error('Error loading homepage settings:', error);
+      }
+    };
+
+    loadSettings();
+
     return () => {
       intervals.forEach(interval => clearInterval(interval));
     };
@@ -99,20 +117,25 @@ export default function Home() {
   return (
     <div className="min-h-screen m-0 p-0">
       <div className="relative z-10">
+      <HeroBanner />
 
       {/* About Section */}
       <section className="m-0 mt-5 md:mt-[50px] p-0 bg-secondary/30">
         <div className="container mx-auto px-4 m-0">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 golden-text">
-              درباره گالری هنری شهرزاد
+              {settings?.aboutTitle || 'درباره گالری هنری شهرزاد'}
             </h2>
             <div className="backdrop-blur-2xl bg-white/40 rounded-lg p-6 md:p-8 max-w-3xl mx-auto border border-white/40 shadow-lg">
               <p className="text-lg text-foreground leading-relaxed">
-                خوش اومدین به دنیای هنر و زیبایی! 🎨 با بیش از ده سال تجربه در ساخت آثار هنری و دکوری، 
-                ما توی گالری هنری شهرزاد منتظرتونیم تا بهترین محصولات رو براتون بسازیم.
-                هر کدوم از آثارمون با عشق و دقت ساخته میشن و واقعاً منحصر به فردن! 
-                به این معنی که اگه یکی از دوستاتون هم بخواد مثل همین رو داشته باشه، باید دوباره به ما سفارش بده 😄
+                {settings?.aboutContent || (
+                  <>
+                    خوش اومدین به دنیای هنر و زیبایی! 🎨 با بیش از ده سال تجربه در ساخت آثار هنری و دکوری،
+                    ما توی گالری هنری شهرزاد منتظرتونیم تا بهترین محصولات رو براتون بسازیم.
+                    هر کدوم از آثارمون با عشق و دقت ساخته میشن و واقعاً منحصر به فردن!
+                    به این معنی که اگه یکی از دوستاتون هم بخواد مثل همین رو داشته باشه، باید دوباره به ما سفارش بده 😄
+                  </>
+                )}
               </p>
             </div>
           </div>
@@ -173,7 +196,7 @@ export default function Home() {
                 <Users className="w-8 h-8 text-foreground stroke-[1.5]" />
               </div>
               <div className="text-3xl md:text-4xl font-bold mb-2 golden-text">
-                <CountUp end={500} suffix="+" duration={2000} />
+                <CountUp end={settings?.statistics?.happyCustomers || 500} suffix="+" duration={2000} />
               </div>
               <p className="text-sm md:text-base text-muted-foreground">مشتری راضی</p>
             </div>
@@ -183,7 +206,7 @@ export default function Home() {
                 <Package className="w-8 h-8 text-foreground stroke-[1.5]" />
               </div>
               <div className="text-3xl md:text-4xl font-bold mb-2 golden-text">
-                <CountUp end={1000} suffix="+" duration={2500} />
+                <CountUp end={settings?.statistics?.products || 1000} suffix="+" duration={2500} />
               </div>
               <p className="text-sm md:text-base text-muted-foreground">محصول تولیدی</p>
             </div>
@@ -193,7 +216,7 @@ export default function Home() {
                 <Calendar className="w-8 h-8 text-foreground stroke-[1.5]" />
               </div>
               <div className="text-3xl md:text-4xl font-bold mb-2 golden-text">
-                <CountUp end={15} suffix="+" duration={1800} />
+                <CountUp end={settings?.statistics?.yearsExperience || 15} suffix="+" duration={1800} />
               </div>
               <p className="text-sm md:text-base text-muted-foreground">سال تجربه</p>
             </div>
@@ -203,7 +226,12 @@ export default function Home() {
                 <Star className="w-8 h-8 text-foreground stroke-[1.5]" />
               </div>
               <div className="text-3xl md:text-4xl font-bold mb-2 golden-text">
-                <CountUp end={4.9} suffix="" duration={2000} decimals={1} />
+                <CountUp
+                  end={settings?.statistics?.satisfactionRate || 4.9}
+                  suffix=""
+                  duration={2000}
+                  decimals={1}
+                />
               </div>
               <p className="text-sm md:text-base text-muted-foreground">امتیاز رضایت</p>
             </div>
@@ -308,12 +336,16 @@ export default function Home() {
             <div className="flex items-center justify-center gap-3 mb-4">
               <TrendingUp className="w-6 h-6 text-primary" />
               <h2 className="text-3xl md:text-4xl font-bold golden-text">
-                محصولات پرفروش
+                {settings?.featuredProductsTitle || 'محصولات پرفروش'}
               </h2>
             </div>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              اینا همون محصولاتی هستن که همه عاشقشون شدن! ❤️
-              (خیلیا میگن نکنین بفروشینشون چون دیگه نمونده برا ما! 😂)
+              {settings?.featuredProductsDescription || (
+                <>
+                  اینا همون محصولاتی هستن که همه عاشقشون شدن! ❤️
+                  (خیلیا میگن نکنین بفروشینشون چون دیگه نمونده برا ما! 😂)
+                </>
+              )}
             </p>
           </div>
           
@@ -396,12 +428,16 @@ export default function Home() {
             <div className="flex items-center justify-center gap-3 mb-4">
               <Quote className="w-6 h-6 text-primary" />
               <h2 className="text-3xl md:text-4xl font-bold golden-text">
-                نظرات مشتریان
+                {settings?.testimonialsTitle || 'نظرات مشتریان'}
               </h2>
             </div>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              اینا نظرات واقعی مشتریهامونن! نه اون چیزای ساختگی که توی بعضی سایت‌ها میبینی 😄
-              وقتی میبینیم چقدر خوشحالن، دل ما هم روشن میشه!
+              {settings?.testimonialsDescription || (
+                <>
+                  اینا نظرات واقعی مشتریهامونن! نه اون چیزای ساختگی که توی بعضی سایت‌ها میبینی 😄
+                  وقتی میبینیم چقدر خوشحالن، دل ما هم روشن میشه!
+                </>
+              )}
             </p>
           </div>
           
@@ -449,11 +485,15 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 golden-text">
-              آخرین مقالات و اخبار
+              {settings?.blogTitle || 'آخرین مقالات و اخبار'}
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              یه سری مطلب جالب که نوشتیم تا بیشتر از هنرهای دستی بفهمین! 📚
-              (واقعاً مفیدن، بخونین پشیمون نمیشین 😊)
+              {settings?.blogDescription || (
+                <>
+                  یه سری مطلب جالب که نوشتیم تا بیشتر از هنرهای دستی بفهمین! 📚
+                  (واقعاً مفیدن، بخونین پشیمون نمیشین 😊)
+                </>
+              )}
             </p>
           </div>
           
@@ -504,11 +544,15 @@ export default function Home() {
       <section className="py-20 golden-gradient">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-black">
-            آماده‌اید یه چیز خفن براتون بسازیم؟ 🚀
+            {settings?.ctaTitle || 'آماده‌اید یه چیز خفن براتون بسازیم؟ 🚀'}
           </h2>
           <p className="text-lg text-black/80 mb-8 max-w-2xl mx-auto">
-            دیگه نیازی نیست دنبال چیزی که می‌خوای بگردی! بگو چی می‌خوای، ما برات می‌سازیمش
-            (تیممون خیلی زرنگن، نگران نباش! 😎)
+            {settings?.ctaDescription || (
+              <>
+                دیگه نیازی نیست دنبال چیزی که می‌خوای بگردی! بگو چی می‌خوای، ما برات می‌سازیمش
+                (تیممون خیلی زرنگن، نگران نباش! 😎)
+              </>
+            )}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="bg-black text-white hover:bg-black/80 text-lg px-8 py-3">

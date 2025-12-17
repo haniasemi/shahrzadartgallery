@@ -67,23 +67,6 @@ export default function RootLayout({ children }) {
         <ClientComponents />
         <Header />
         <AdminEditToolbar />
-        {/* Hero Image */}
-        <section id="banner-section" className="relative w-full m-0 p-0 mt-5 md:-mt-20">
-          <div
-            id="banner-image"
-            className="relative w-full h-auto md:h-[800px] m-0 p-0"
-          >
-            <Image
-              src="/photo_2025-09-06_06-37-29.jpg"
-              alt="گالری هنری شهرزاد"
-              width={1280}
-              height={800}
-              className="w-full h-auto md:h-[800px] object-cover m-0 p-0"
-              sizes="100vw"
-              priority
-            />
-          </div>
-        </section>
         <main className="min-h-screen m-0 p-0">
           {children}
         </main>
